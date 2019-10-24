@@ -4,7 +4,7 @@ module.exports = {
   entry: `./src/index.js`,
   output: {
     filename: `bundle.js`,
-    path: path.join(__dirname, `public`)
+    path: path.join(__dirname, `public`),
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
@@ -22,4 +22,7 @@ module.exports = {
     }],
   },
   devtool: `source-map`,
+  resolve: {
+    extensions: [`.js`, `.jsx`],
+  },
 };

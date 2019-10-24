@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 export const App = (props) => {
-  const {films} = props;
+  const {films, onTitleClick} = props;
 
   return <div>
     <section className="movie-card">
@@ -37,7 +36,8 @@ export const App = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+            <h2 className="movie-card__title"
+              onClick={onTitleClick}>The Grand Budapest Hotel</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">Drama</span>
               <span className="movie-card__year">2014</span>
@@ -137,4 +137,5 @@ App.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
   })).isRequired,
+  onTitleClick: PropTypes.func.isRequired,
 };

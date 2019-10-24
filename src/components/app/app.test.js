@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import renderer from 'react-test-renderer';
 
-import {App} from './components/app/app';
+import {App} from './app';
 
 const mockFilms = [{
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -18,14 +18,13 @@ const mockHandleTitleClick = () => {
   console.log(`clicked!`);
 };
 
-const init = () => {
-  ReactDOM.render(
-      <App
-        films={mockFilms}
-        onTitleClick={mockHandleTitleClick}
-      />,
-      document.getElementById(`root`)
-  );
-};
+it(`App correctly renders after relaunch`, () => {
+  const tree = renderer
+    .create(<App
+      films={mockFilms}
+      onTitleClick={mockHandleTitleClick}
+    />)
+    .toJSON();
 
-init();
+  expect(tree).toMatchSnapshot();
+});
