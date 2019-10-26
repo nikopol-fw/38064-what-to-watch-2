@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {FilmsList} from '../films-list/films-list';
+
 export const App = (props) => {
-  const {films, onTitleClick} = props;
+  const {films} = props;
 
   return <div>
     <section className="movie-card">
@@ -36,8 +38,7 @@ export const App = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title"
-              onClick={onTitleClick}>The Grand Budapest Hotel</h2>
+            <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">Drama</span>
               <span className="movie-card__year">2014</span>
@@ -99,17 +100,7 @@ export const App = (props) => {
           </li>
         </ul>
 
-        <div className="catalog__movies-list">
-          {films.map((film, i) => <article key={film + i} className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                alt="{film.title}" width="280" height="175"/>
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
-            </h3>
-          </article>)}
-        </div>
+        <FilmsList films={films}/>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -136,6 +127,6 @@ export const App = (props) => {
 App.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
   })).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
 };
