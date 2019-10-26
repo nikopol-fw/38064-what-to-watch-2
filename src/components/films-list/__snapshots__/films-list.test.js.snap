@@ -23,7 +23,7 @@ exports[`FilmList correctly renders after relaunch 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films"
       >
         Fantastic Beasts: The Crimes of Grindelwald
       </a>
@@ -48,7 +48,7 @@ exports[`FilmList correctly renders after relaunch 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films"
       >
         Bohemian Rhapsody
       </a>
@@ -73,7 +73,7 @@ exports[`FilmList correctly renders after relaunch 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films"
       >
         Macbeth
       </a>
@@ -98,7 +98,7 @@ exports[`FilmList correctly renders after relaunch 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films"
       >
         Aviator
       </a>
@@ -123,7 +123,7 @@ exports[`FilmList correctly renders after relaunch 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/films"
       >
         We need to talk about Kevin
       </a>
