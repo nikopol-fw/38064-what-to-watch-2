@@ -13,22 +13,25 @@ Enzyme.configure({
 describe(`FilmCard e2e`, () => {
   it(`Hover callback get right information about card`, () => {
     const mockFilm = films[0];
-    const cardHoverHandler = jest.fn((film) => {
+    const isPlaying = false;
+    const cardMouseEnterHandler = jest.fn((film) => {
       // eslint-disable-next-line no-console
-      console.log(film.title);
-      // eslint-disable-next-line no-console
-      console.log(film.img);
+      console.log(film.id);
     });
+    const cardMouseLeaveHandler = jest.fn();
 
     const filmCard = shallow(<FilmCard
       title={mockFilm.title}
-      img={mockFilm.img}
-      onCardHover={cardHoverHandler.bind(null, mockFilm)}
+      preview={mockFilm.preview}
+      poster={mockFilm.poster}
+      isPlaying={isPlaying}
+      onCardMouseEnter={cardMouseEnterHandler.bind(null, mockFilm)}
+      onCardMouseLeave={cardMouseLeaveHandler}
     />);
 
     filmCard
       .simulate(`mouseenter`);
 
-    expect(cardHoverHandler).toHaveBeenCalledWith(mockFilm);
+    expect(cardMouseEnterHandler).toHaveBeenCalledWith(mockFilm);
   });
 });

@@ -126,7 +126,9 @@ export const MainPage = (props) => {
 
 MainPage.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
   })).isRequired,
 };

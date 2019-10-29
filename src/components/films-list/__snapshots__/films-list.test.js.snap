@@ -7,14 +7,18 @@ exports[`FilmList correctly renders after relaunch 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        loop={true}
+        muted={true}
+        poster="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        preload="metadata"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
       />
     </div>
@@ -32,14 +36,18 @@ exports[`FilmList correctly renders after relaunch 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Bohemian Rhapsody"
+      <video
         height="175"
-        src="img/bohemian-rhapsody.jpg"
+        loop={true}
+        muted={true}
+        poster="/img/bohemian-rhapsody.jpg"
+        preload="metadata"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
         width="280"
       />
     </div>
@@ -57,14 +65,18 @@ exports[`FilmList correctly renders after relaunch 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Macbeth"
+      <video
         height="175"
-        src="img/macbeth.jpg"
+        loop={true}
+        muted={true}
+        poster="/img/macbeth.jpg"
+        preload="metadata"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
       />
     </div>
@@ -82,14 +94,18 @@ exports[`FilmList correctly renders after relaunch 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Aviator"
+      <video
         height="175"
-        src="img/aviator.jpg"
+        loop={true}
+        muted={true}
+        poster="/img/aviator.jpg"
+        preload="metadata"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
         width="280"
       />
     </div>
@@ -107,14 +123,18 @@ exports[`FilmList correctly renders after relaunch 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
     onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="We need to talk about Kevin"
+      <video
         height="175"
-        src="img/we-need-to-talk-about-kevin.jpg"
+        loop={true}
+        muted={true}
+        poster="/img/we-need-to-talk-about-kevin.jpg"
+        preload="metadata"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
       />
     </div>

@@ -6,6 +6,8 @@ import {FilmCard} from '../film-card/film-card';
 export class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
+    this.videoPlayDelay = 1000;
+    this.delayTimer = null;
 
     this.state = {
       activeFilm: -1,
@@ -16,17 +18,29 @@ export class FilmsList extends PureComponent {
     const {films} = this.props;
 
     return <div className="catalog__movies-list">
-      {films.map((film, i) => <FilmCard key={i}
+      {films.map((film, i) => <FilmCard key={film.id}
         title={film.title}
-        img={film.img}
-        isActive={this.state.activeFilm === i}
-        onCardHover={this._cardHoverHandler.bind(this, i)}
+        preview={film.preview}
+        poster={film.poster}
+        isPlaying={this.state.activeFilm === i}
+        onCardMouseEnter={this._cardMouseEnterHandler.bind(this, i)}
+        onCardMouseLeave={this._cardMouseLeaverHandler.bind(this)}
       />)}
     </div>;
   }
 
-  _cardHoverHandler(ind) {
-    this._setActiveState(ind);
+  _cardMouseEnterHandler(ind) {
+    this.delayTimer = setTimeout(() => {
+      this._setActiveState(ind);
+    }, this.videoPlayDelay);
+  }
+
+  _cardMouseLeaverHandler() {
+    if (this.delayTimer) {
+      clearTimeout(this.delayTimer);
+      this.delayTimer = null;
+    }
+    this._resetState();
   }
 
   _setActiveState(ind) {
@@ -34,11 +48,19 @@ export class FilmsList extends PureComponent {
       activeFilm: ind,
     });
   }
+
+  _resetState() {
+    this.setState({
+      activeFilm: -1,
+    });
+  }
 }
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
   })).isRequired,
 };
