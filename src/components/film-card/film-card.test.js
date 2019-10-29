@@ -7,13 +7,18 @@ import {FilmCard} from './film-card';
 
 it(`FilmCard correctly renders after relaunch`, () => {
   const mockFilm = films[0];
-  const mockCardHoverHandler = () => {};
+  const isPlaying = false;
+  const cardMouseEnterHandler = () => {};
+  const cardMouseLeaveHandler = () => {};
 
   const tree = renderer
     .create(<FilmCard
       title={mockFilm.title}
-      img={mockFilm.img}
-      onCardHover={mockCardHoverHandler}
+      preview={mockFilm.preview}
+      poster={mockFilm.poster}
+      isPlaying={isPlaying}
+      onCardMouseEnter={cardMouseEnterHandler}
+      onCardMouseLeave={cardMouseLeaveHandler}
     />)
     .toJSON();
 
