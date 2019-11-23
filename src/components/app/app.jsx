@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {MainPage} from '../main-page/main-page';
+import MainPage from '../main-page/main-page';
 import {FilmPage} from '../film-page/film-page';
 
 const getPageScreen = (props) => {
@@ -23,9 +23,11 @@ const getPageScreen = (props) => {
   }
 };
 
+
 export const App = (props) => {
   return <React.Fragment>{getPageScreen(props)}</React.Fragment>;
 };
+
 
 getPageScreen.propTypes = {
   films: PropTypes.arrayOf(PropTypes.shape({

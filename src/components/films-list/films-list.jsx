@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {FilmCard} from '../film-card/film-card';
 
+
 export class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
@@ -15,17 +16,29 @@ export class FilmsList extends PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {activeGenre, films} = this.props;
 
     return <div className="catalog__movies-list">
-      {films.map((film, i) => <FilmCard key={film.id}
-        title={film.title}
-        preview={film.preview}
-        poster={film.poster}
-        isPlaying={this.state.activeFilm === i}
-        onCardMouseEnter={this._cardMouseEnterHandler.bind(this, i)}
-        onCardMouseLeave={this._cardMouseLeaverHandler.bind(this)}
-      />)}
+      {activeGenre === `All genres`
+        ? films
+          .map((film, i) => <FilmCard key={`film-card-${film.id}`}
+            title={film.title}
+            preview={film.preview}
+            poster={film.poster}
+            isPlaying={this.state.activeFilm === i}
+            onCardMouseEnter={this._cardMouseEnterHandler.bind(this, i)}
+            onCardMouseLeave={this._cardMouseLeaverHandler.bind(this)}
+          />)
+        : films
+          .filter((film) => film.genre === activeGenre)
+          .map((film, i) => <FilmCard key={`film-card-${film.id}`}
+            title={film.title}
+            preview={film.preview}
+            poster={film.poster}
+            isPlaying={this.state.activeFilm === i}
+            onCardMouseEnter={this._cardMouseEnterHandler.bind(this, i)}
+            onCardMouseLeave={this._cardMouseLeaverHandler.bind(this)}
+          />)}
     </div>;
   }
 
@@ -57,6 +70,9 @@ export class FilmsList extends PureComponent {
 }
 
 FilmsList.propTypes = {
+  activeGenre: PropTypes.oneOf(
+      [`All genres`, `Fantasy`, `Drama`, `Detective`]
+  ).isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
