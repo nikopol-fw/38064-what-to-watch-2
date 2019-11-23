@@ -5,6 +5,7 @@ import {film} from '../../mocks/film';
 
 import {FilmPage} from './film-page';
 
+
 it(`FilmPage correctly renders afters relaunch`, () => {
   const mockFilm = film;
 

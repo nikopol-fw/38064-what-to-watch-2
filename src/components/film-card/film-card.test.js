@@ -5,6 +5,7 @@ import {films} from './../../mocks/films';
 
 import {FilmCard} from './film-card';
 
+
 it(`FilmCard correctly renders after relaunch`, () => {
   const mockFilm = films[0];
   const isPlaying = false;
