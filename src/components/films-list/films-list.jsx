@@ -7,16 +7,10 @@ import {FilmCard} from '../film-card/film-card';
 export class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
-    this.videoPlayDelay = 1000;
-    this.delayTimer = null;
-
-    this.state = {
-      activeFilm: -1,
-    };
   }
 
   render() {
-    const {activeGenre, films} = this.props;
+    const {activeGenre, films, activeCard, onCardMouseEnter, onCardMouseLeaver} = this.props;
 
     return <div className="catalog__movies-list">
       {activeGenre === `All genres`
@@ -25,9 +19,9 @@ export class FilmsList extends PureComponent {
             title={film.title}
             preview={film.preview}
             poster={film.poster}
-            isPlaying={this.state.activeFilm === i}
-            onCardMouseEnter={this._cardMouseEnterHandler.bind(this, i)}
-            onCardMouseLeave={this._cardMouseLeaverHandler.bind(this)}
+            isPlaying={i === activeCard}
+            onCardMouseEnter={onCardMouseEnter.bind(null, i)}
+            onCardMouseLeave={onCardMouseLeaver}
           />)
         : films
           .filter((film) => film.genre === activeGenre)
@@ -35,48 +29,24 @@ export class FilmsList extends PureComponent {
             title={film.title}
             preview={film.preview}
             poster={film.poster}
-            isPlaying={this.state.activeFilm === i}
-            onCardMouseEnter={this._cardMouseEnterHandler.bind(this, i)}
-            onCardMouseLeave={this._cardMouseLeaverHandler.bind(this)}
+            isPlaying={i === activeCard}
+            onCardMouseEnter={onCardMouseEnter.bind(null, i)}
+            onCardMouseLeave={onCardMouseLeaver}
           />)}
     </div>;
   }
-
-  _cardMouseEnterHandler(ind) {
-    this.delayTimer = setTimeout(() => {
-      this._setActiveState(ind);
-    }, this.videoPlayDelay);
-  }
-
-  _cardMouseLeaverHandler() {
-    if (this.delayTimer) {
-      clearTimeout(this.delayTimer);
-      this.delayTimer = null;
-    }
-    this._resetState();
-  }
-
-  _setActiveState(ind) {
-    this.setState({
-      activeFilm: ind,
-    });
-  }
-
-  _resetState() {
-    this.setState({
-      activeFilm: -1,
-    });
-  }
 }
 
+
 FilmsList.propTypes = {
-  activeGenre: PropTypes.oneOf(
-      [`All genres`, `Fantasy`, `Drama`, `Detective`]
-  ).isRequired,
+  activeGenre: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
   })).isRequired,
+  activeCard: PropTypes.number,
+  onCardMouseEnter: PropTypes.func.isRequired,
+  onCardMouseLeaver: PropTypes.func.isRequired,
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {VideoPlayer} from '../video-player/video-player';
 
+
 export const FilmCard = (props) => {
   const {title, preview, poster, isPlaying, onCardMouseEnter, onCardMouseLeave} = props;
 
@@ -21,6 +22,7 @@ export const FilmCard = (props) => {
     </h3>
   </article>;
 };
+
 
 FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
