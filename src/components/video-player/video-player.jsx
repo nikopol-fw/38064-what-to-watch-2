@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
+
 export class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
@@ -29,6 +30,7 @@ export class VideoPlayer extends PureComponent {
     }
   }
 }
+
 
 VideoPlayer.propTypes = {
   preview: PropTypes.string.isRequired,
