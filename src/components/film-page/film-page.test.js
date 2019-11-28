@@ -6,16 +6,18 @@ import {film} from '../../mocks/film';
 import {FilmPage} from './film-page';
 
 
-it(`FilmPage correctly renders afters relaunch`, () => {
-  const mockFilm = film;
+const mock = {
+  film,
+};
 
+it(`FilmPage correctly renders afters relaunch`, () => {
   const tree = renderer
     .create(<FilmPage
-      title={mockFilm.title}
-      genre={mockFilm.genre}
-      releaseYear={mockFilm.releaseYear}
-      posterImg={mockFilm.posterImg}
-      coverImg={mockFilm.coverImg}
+      title={mock.film.title}
+      genre={mock.film.genre}
+      releaseYear={mock.film.releaseYear}
+      posterImg={mock.film.posterImg}
+      coverImg={mock.film.coverImg}
     />)
     .toJSON();
 
