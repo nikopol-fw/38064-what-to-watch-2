@@ -2,14 +2,28 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 
-export class GenreList extends PureComponent {
+class GenreList extends PureComponent {
   constructor(props) {
     super(props);
   }
 
+  getGenres(films) {
+    const genresSet = new Set();
+
+    films.forEach((film) => {
+      genresSet.add(film.genre);
+    });
+
+    const genres = Array.from(genresSet);
+    genres.sort();
+    genres.unshift(`All genres`);
+
+    return genres;
+  }
+
   render() {
     const {activeGenre, onLinkClick} = this.props;
-    const genres = this._getGenres(this.props.films);
+    const genres = this.getGenres(this.props.films);
 
     return <ul className="catalog__genres-list">
       {genres.map((genre, i) => (
@@ -23,20 +37,6 @@ export class GenreList extends PureComponent {
         </li>
       ))}
     </ul>;
-  }
-
-  _getGenres(films) {
-    const genresSet = new Set();
-
-    films.forEach((film) => {
-      genresSet.add(film.genre);
-    });
-
-    const genres = Array.from(genresSet);
-    genres.sort();
-    genres.unshift(`All genres`);
-
-    return genres;
   }
 }
 
@@ -53,3 +53,6 @@ GenreList.propTypes = {
   })).isRequired,
   onLinkClick: PropTypes.func.isRequired,
 };
+
+
+export {GenreList};

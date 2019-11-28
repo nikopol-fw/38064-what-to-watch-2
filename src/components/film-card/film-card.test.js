@@ -6,20 +6,24 @@ import {films} from './../../mocks/films';
 import {FilmCard} from './film-card';
 
 
-it(`FilmCard correctly renders after relaunch`, () => {
-  const mockFilm = films[0];
-  const isPlaying = false;
-  const cardMouseEnterHandler = () => {};
-  const cardMouseLeaveHandler = () => {};
+const mock = {
+  film: films[0],
+  isPlaying: false,
+  index: 13,
+  onCardMouseEnter: () => {},
+  onCardMouseLeave: () => {},
+};
 
+it(`FilmCard correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<FilmCard
-      title={mockFilm.title}
-      preview={mockFilm.preview}
-      poster={mockFilm.poster}
-      isPlaying={isPlaying}
-      onCardMouseEnter={cardMouseEnterHandler}
-      onCardMouseLeave={cardMouseLeaveHandler}
+      title={mock.film.title}
+      preview={mock.film.preview}
+      poster={mock.film.poster}
+      isPlaying={mock.isPlaying}
+      index={mock.index}
+      onCardMouseEnter={mock.onCardMouseEnter}
+      onCardMouseLeave={mock.onCardMouseLeave}
     />)
     .toJSON();
 

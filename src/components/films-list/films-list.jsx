@@ -7,76 +7,68 @@ import {FilmCard} from '../film-card/film-card';
 export class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
+
     this.videoPlayDelay = 1000;
     this.delayTimer = null;
 
-    this.state = {
-      activeFilm: -1,
-    };
+    this.onCardMouseEnter = this.onCardMouseEnter.bind(this);
+    this.onCardMouseLeaver = this.onCardMouseLeaver.bind(this);
   }
 
-  render() {
-    const {activeGenre, films} = this.props;
-
-    return <div className="catalog__movies-list">
-      {activeGenre === `All genres`
-        ? films
-          .map((film, i) => <FilmCard key={`film-card-${film.id}`}
-            title={film.title}
-            preview={film.preview}
-            poster={film.poster}
-            isPlaying={this.state.activeFilm === i}
-            onCardMouseEnter={this._cardMouseEnterHandler.bind(this, i)}
-            onCardMouseLeave={this._cardMouseLeaverHandler.bind(this)}
-          />)
-        : films
-          .filter((film) => film.genre === activeGenre)
-          .map((film, i) => <FilmCard key={`film-card-${film.id}`}
-            title={film.title}
-            preview={film.preview}
-            poster={film.poster}
-            isPlaying={this.state.activeFilm === i}
-            onCardMouseEnter={this._cardMouseEnterHandler.bind(this, i)}
-            onCardMouseLeave={this._cardMouseLeaverHandler.bind(this)}
-          />)}
-    </div>;
-  }
-
-  _cardMouseEnterHandler(ind) {
+  onCardMouseEnter(i) {
     this.delayTimer = setTimeout(() => {
-      this._setActiveState(ind);
+      this.props.setActiveCard(i);
     }, this.videoPlayDelay);
   }
 
-  _cardMouseLeaverHandler() {
+  onCardMouseLeaver() {
     if (this.delayTimer) {
       clearTimeout(this.delayTimer);
       this.delayTimer = null;
     }
-    this._resetState();
+    this.props.resetActiveCard();
   }
 
-  _setActiveState(ind) {
-    this.setState({
-      activeFilm: ind,
-    });
-  }
+  render() {
+    const {activeGenre, films, activeCard} = this.props;
 
-  _resetState() {
-    this.setState({
-      activeFilm: -1,
-    });
+    return <div className="catalog__movies-list">
+      {activeGenre === `All genres`
+        ? films
+          .map((film, i) => <FilmCard key={`film-card-${i}`}
+            title={film.title}
+            preview={film.preview}
+            poster={film.poster}
+            isPlaying={i === activeCard}
+            index={i}
+            onCardMouseEnter={this.onCardMouseEnter}
+            onCardMouseLeave={this.onCardMouseLeaver}
+          />)
+        : films
+          .filter((film) => film.genre === activeGenre)
+          .map((film, i) => <FilmCard key={`film-card-${i}`}
+            title={film.title}
+            preview={film.preview}
+            poster={film.poster}
+            isPlaying={i === activeCard}
+            index={i}
+            onCardMouseEnter={this.onCardMouseEnter}
+            onCardMouseLeave={this.onCardMouseLeaver}
+          />)}
+    </div>;
   }
 }
 
+
 FilmsList.propTypes = {
-  activeGenre: PropTypes.oneOf(
-      [`All genres`, `Fantasy`, `Drama`, `Detective`]
-  ).isRequired,
+  activeGenre: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
   })).isRequired,
+  activeCard: PropTypes.number,
+  setActiveCard: PropTypes.func.isRequired,
+  resetActiveCard: PropTypes.func.isRequired,
 };

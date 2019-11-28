@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
+import {ActionCreator} from '../../reducer';
+
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+
 import {FilmsList} from '../films-list/films-list';
 import {GenreList} from '../genre-list/genre-list';
-import {ActionCreator} from '../../reducer';
+
+
+const FilmsListWrapped = withActiveItem(FilmsList);
 
 
 const MainPage = (props) => {
@@ -37,8 +43,7 @@ const MainPage = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
-              height="327"/>
+            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327"/>
           </div>
 
           <div className="movie-card__desc">
@@ -77,40 +82,7 @@ const MainPage = (props) => {
           onLinkClick={onGenreLinkClick}
         />
 
-        {/* <ul className="catalog__genres-list">*/}
-        {/*  <li className="catalog__genres-item catalog__genres-item--active">*/}
-        {/*    <a href="#" className="catalog__genres-link">All genres</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Comedies</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Crime</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Documentary</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Dramas</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Horror</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Kids & Family</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Romance</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Sci-Fi</a>*/}
-        {/*  </li>*/}
-        {/*  <li className="catalog__genres-item">*/}
-        {/*    <a href="#" className="catalog__genres-link">Thrillers</a>*/}
-        {/*  </li>*/}
-        {/* </ul>*/}
-
-        <FilmsList
+        <FilmsListWrapped
           activeGenre={activeGenre}
           films={films}
         />
