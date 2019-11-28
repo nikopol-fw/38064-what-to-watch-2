@@ -4,13 +4,13 @@ import {connect} from 'react-redux';
 
 import {ActionCreator} from '../../reducer';
 
-import withActivePlayer from '../../hocs/with-active-player/with-active-player';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
 import {FilmsList} from '../films-list/films-list';
 import {GenreList} from '../genre-list/genre-list';
 
 
-const FilmsListWrapped = withActivePlayer(FilmsList);
+const FilmsListWrapped = withActiveItem(FilmsList);
 
 
 const MainPage = (props) => {
