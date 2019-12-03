@@ -114,18 +114,14 @@ MainPage.propTypes = {
   activeGenre: PropTypes.oneOf(
       [`All genres`, `Fantasy`, `Drama`, `Detective`]
   ).isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-  })).isRequired,
+  films: PropTypes.array.isRequired,
   onGenreLinkClick: PropTypes.func.isRequired,
 };
 
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   activeGenre: state.genre,
+  films: state.films,
 });
 
 const mapDispatchToProps = (dispatch) => ({

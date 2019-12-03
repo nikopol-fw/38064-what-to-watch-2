@@ -1,4 +1,4 @@
-export const films = [{
+const films = [{
   id: 1,
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
   preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,

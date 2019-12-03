@@ -30,11 +30,7 @@ export const App = (props) => {
 
 
 getPageScreen.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-  })).isRequired,
+  films: PropTypes.array.isRequired,
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,

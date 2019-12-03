@@ -14,7 +14,7 @@ export class VideoPlayer extends PureComponent {
 
     return <video width="280" height="175" preload="metadata" muted loop
       src={preview}
-      poster={`/img/${poster}`}
+      poster={poster}
 
       ref={this.videoRef}
     />;

@@ -36,9 +36,9 @@ export class FilmsList extends PureComponent {
       {activeGenre === `All genres`
         ? films
           .map((film, i) => <FilmCard key={`film-card-${i}`}
-            title={film.title}
-            preview={film.preview}
-            poster={film.poster}
+            title={film.name}
+            preview={film.preview_video_link}
+            poster={film.preview_image}
             isPlaying={i === activeCard}
             index={i}
             onCardMouseEnter={this.onCardMouseEnter}
@@ -63,10 +63,9 @@ export class FilmsList extends PureComponent {
 FilmsList.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    preview_image: PropTypes.string.isRequired,
+    preview_video_link: PropTypes.string.isRequired,
   })).isRequired,
   activeCard: PropTypes.number,
   setActiveCard: PropTypes.func.isRequired,
