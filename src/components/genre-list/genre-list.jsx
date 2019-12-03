@@ -42,14 +42,9 @@ class GenreList extends PureComponent {
 
 
 GenreList.propTypes = {
-  activeGenre: PropTypes.oneOf(
-      [`All genres`, `Fantasy`, `Drama`, `Detective`]
-  ).isRequired,
+  activeGenre: PropTypes.string.isRequired,
   films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
   })).isRequired,
   onLinkClick: PropTypes.func.isRequired,
 };

@@ -12,15 +12,15 @@ class FilmCard extends PureComponent {
   }
 
   render() {
-    const {title, preview, poster, isPlaying, onCardMouseLeave} = this.props;
+    const {title, previewImage, previewVideoLink, isPlaying, onCardMouseLeave} = this.props;
 
     return <article className="small-movie-card catalog__movies-card"
       onMouseEnter={this.onCardMouserEnter}
       onMouseLeave={onCardMouseLeave}>
       <div className="small-movie-card__image">
         <VideoPlayer
-          preview={preview}
-          poster={poster}
+          poster={previewImage}
+          preview={previewVideoLink}
           isPlaying={isPlaying}
         />
       </div>
@@ -34,8 +34,8 @@ class FilmCard extends PureComponent {
 
 FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
-  preview: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  previewImage: PropTypes.string.isRequired,
+  previewVideoLink: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   index: PropTypes.number.isRequired,
   onCardMouseEnter: PropTypes.func.isRequired,

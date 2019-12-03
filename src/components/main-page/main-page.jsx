@@ -111,9 +111,7 @@ const MainPage = (props) => {
 
 
 MainPage.propTypes = {
-  activeGenre: PropTypes.oneOf(
-      [`All genres`, `Fantasy`, `Drama`, `Detective`]
-  ).isRequired,
+  activeGenre: PropTypes.string.isRequired,
   films: PropTypes.array.isRequired,
   onGenreLinkClick: PropTypes.func.isRequired,
 };

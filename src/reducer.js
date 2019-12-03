@@ -23,11 +23,41 @@ const ActionCreator = {
 };
 
 
+const isObject = (value) => {
+  return value && typeof value === `object` && value.constructor === Object;
+};
+
+const snakeToCamel = (str) => {
+  return str.replace(
+      /([-_][a-z])/gi,
+      ($1) => $1
+      .toUpperCase()
+      .replace(`-`, ``)
+      .replace(`_`, ``));
+};
+
+const keysToCamel = (obj) => {
+  if (isObject(obj)) {
+    const newObj = {};
+
+    Object.keys(obj)
+      .forEach((key) => {
+        newObj[snakeToCamel(key)] = keysToCamel(obj[key]);
+      });
+    return newObj;
+
+  } else if (Array.isArray(obj)) {
+    return obj.map((item) => keysToCamel(item));
+  }
+
+  return obj;
+};
+
 const Operation = {
   loadFilms: () => (dispatch, _getState, api) => {
     return api.get(`/films`)
       .then((response) => {
-        console.log(response.data);
+        response.data = response.data.map((film) => keysToCamel(film));
         dispatch(ActionCreator.loadFilms(response.data));
       });
   },

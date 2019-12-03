@@ -8,5 +8,9 @@ export const createAPI = (dispatch) => {
     withCredentials: true,
   });
 
+  const onSuccess = (response) => response;
+
+  api.interceptors.response.use(onSuccess);
+
   return api;
 };
