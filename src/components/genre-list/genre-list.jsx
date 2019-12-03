@@ -7,20 +7,6 @@ class GenreList extends PureComponent {
     super(props);
   }
 
-  getGenres(films) {
-    const genresSet = new Set();
-
-    films.forEach((film) => {
-      genresSet.add(film.genre);
-    });
-
-    const genres = Array.from(genresSet);
-    genres.sort();
-    genres.unshift(`All genres`);
-
-    return genres;
-  }
-
   onGenreLinkClick(genre) {
     return (evt) => {
       evt.preventDefault();
@@ -29,8 +15,7 @@ class GenreList extends PureComponent {
   }
 
   render() {
-    const {activeGenre} = this.props;
-    const genres = this.getGenres(this.props.films);
+    const {activeGenre, genres} = this.props;
 
     return <ul className="catalog__genres-list">
       {genres.map((genre, i) => (
@@ -47,9 +32,7 @@ class GenreList extends PureComponent {
 
 GenreList.propTypes = {
   activeGenre: PropTypes.string.isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape({
-    genre: PropTypes.string.isRequired,
-  })).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   onLinkClick: PropTypes.func.isRequired,
 };
 

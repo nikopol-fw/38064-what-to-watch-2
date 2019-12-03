@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {ActionCreator} from '../../reducer/user/user';
+import {getFilms, getGenres} from '../../reducer/data/selectors';
+import {getActiveGenre} from '../../reducer/user/selectors';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
-
 import {FilmsList} from '../films-list/films-list';
 import {GenreList} from '../genre-list/genre-list';
 
@@ -14,7 +15,7 @@ const FilmsListWrapped = withActiveItem(FilmsList);
 
 
 const MainPage = (props) => {
-  const {activeGenre, films, onGenreLinkClick} = props;
+  const {activeGenre, films, genres, onGenreLinkClick} = props;
 
   return <div>
     <section className="movie-card">
@@ -78,7 +79,7 @@ const MainPage = (props) => {
 
         <GenreList
           activeGenre={activeGenre}
-          films={films}
+          genres={genres}
           onLinkClick={onGenreLinkClick}
         />
 
@@ -113,13 +114,15 @@ const MainPage = (props) => {
 MainPage.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   films: PropTypes.array.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   onGenreLinkClick: PropTypes.func.isRequired,
 };
 
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  activeGenre: state.USER.genre,
-  films: state.DATA.films,
+  activeGenre: getActiveGenre(state),
+  genres: getGenres(state),
+  films: getFilms(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
