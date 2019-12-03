@@ -1,6 +1,6 @@
-import {ActionCreator, ActionType, reducer} from './reducer';
+import {ActionCreator, ActionType, reducer} from './user';
 
-import {films} from './mocks/films';
+import {films} from '../../mocks/films';
 
 
 describe(`Business logic is correct`, () => {

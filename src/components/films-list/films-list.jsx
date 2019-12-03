@@ -47,7 +47,7 @@ export class FilmsList extends PureComponent {
         : films
           .filter((film) => film.genre === activeGenre)
           .map((film, i) => <FilmCard key={`film-card-${i}`}
-            title={film.title}
+            title={film.name}
             previewImage={film.previewImage}
             previewVideoLink={film.previewVideoLink}
             isPlaying={i === activeCard}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {ActionCreator} from '../../reducer';
+import {ActionCreator} from '../../reducer/user/user';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
@@ -118,8 +118,8 @@ MainPage.propTypes = {
 
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  activeGenre: state.genre,
-  films: state.films,
+  activeGenre: state.USER.genre,
+  films: state.DATA.films,
 });
 
 const mapDispatchToProps = (dispatch) => ({
