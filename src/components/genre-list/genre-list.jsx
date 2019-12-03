@@ -21,8 +21,15 @@ class GenreList extends PureComponent {
     return genres;
   }
 
+  onGenreLinkClick(genre) {
+    return (evt) => {
+      evt.preventDefault();
+      this.props.onLinkClick(genre);
+    };
+  }
+
   render() {
-    const {activeGenre, onLinkClick} = this.props;
+    const {activeGenre} = this.props;
     const genres = this.getGenres(this.props.films);
 
     return <ul className="catalog__genres-list">
@@ -30,10 +37,7 @@ class GenreList extends PureComponent {
         <li className={`catalog__genres-item${genre === activeGenre ? ` catalog__genres-item--active` : ``}`}
           key={`filter-genre-${i}`}>
           <a href="#" className="catalog__genres-link"
-            onClick={(evt) => {
-              evt.preventDefault();
-              onLinkClick(genre);
-            }}>{genre}</a>
+            onClick={this.onGenreLinkClick(genre)}>{genre}</a>
         </li>
       ))}
     </ul>;
