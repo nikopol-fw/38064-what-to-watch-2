@@ -1,15 +1,10 @@
-import {films} from './mocks/films';
-
-
 const initialState = {
   genre: `All genres`,
-  films,
 };
 
 
 const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
-  GET_FILMS_WITH_GENRE: `GET_FILMS_WITH_GENRE`,
 };
 
 

@@ -13,9 +13,9 @@ exports[`FilmCard correctly renders after relaunch 1`] = `
       height="175"
       loop={true}
       muted={true}
-      poster="/img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
       preload="metadata"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+      src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
       width="280"
     />
   </div>
@@ -26,7 +26,7 @@ exports[`FilmCard correctly renders after relaunch 1`] = `
       className="small-movie-card__link"
       href="/films"
     >
-      Fantastic Beasts: The Crimes of Grindelwald
+      Gangs of new york
     </a>
   </h3>
 </article>

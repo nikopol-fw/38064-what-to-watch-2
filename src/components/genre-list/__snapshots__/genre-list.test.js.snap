@@ -23,7 +23,7 @@ exports[`GenreList correctly renders after relaunch 1`] = `
       href="#"
       onClick={[Function]}
     >
-      Detective
+      Crime
     </a>
   </li>
   <li
@@ -34,7 +34,7 @@ exports[`GenreList correctly renders after relaunch 1`] = `
       href="#"
       onClick={[Function]}
     >
-      Drama
+      Adventure
     </a>
   </li>
   <li
@@ -45,7 +45,7 @@ exports[`GenreList correctly renders after relaunch 1`] = `
       href="#"
       onClick={[Function]}
     >
-      Fantasy
+      Comedy
     </a>
   </li>
 </ul>

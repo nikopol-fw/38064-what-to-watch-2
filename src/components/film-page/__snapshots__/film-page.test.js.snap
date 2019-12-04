@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="The Grand Budapest Hotel"
-          src="img/bg-the-grand-budapest-hotel.jpg"
+          alt="Gangs of new york"
+          src="img/https://htmlacademy-react-2.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg"
         />
       </div>
       <h1
@@ -72,7 +72,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Gangs of new york
           </h2>
           <p
             className="movie-card__meta"
@@ -80,12 +80,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Drama
+              Crime
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2002
             </span>
           </p>
           <div
@@ -145,9 +145,9 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Gangs of new york poster"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="img/https://htmlacademy-react-2.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg"
             width="218"
           />
         </div>
