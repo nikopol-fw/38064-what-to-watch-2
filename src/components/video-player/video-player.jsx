@@ -9,17 +9,6 @@ export class VideoPlayer extends PureComponent {
     this.videoRef = React.createRef();
   }
 
-  render() {
-    const {preview, poster} = this.props;
-
-    return <video width="280" height="175" preload="metadata" muted loop
-      src={preview}
-      poster={poster}
-
-      ref={this.videoRef}
-    />;
-  }
-
   componentDidUpdate() {
     /** @type {HTMLVideoElement} */
     const videoElement = this.videoRef.current;
@@ -29,11 +18,21 @@ export class VideoPlayer extends PureComponent {
       videoElement.load();
     }
   }
+
+  render() {
+    const {preview, poster} = this.props;
+
+    return <video width="280" height="175" preload="metadata" muted loop
+      src={preview}
+      poster={poster}
+      ref={this.videoRef}
+    />;
+  }
 }
 
 
 VideoPlayer.propTypes = {
-  preview: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
+  preview: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
 };

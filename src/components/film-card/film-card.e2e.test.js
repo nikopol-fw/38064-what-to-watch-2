@@ -12,30 +12,34 @@ Enzyme.configure({
 });
 
 
+const mock = {
+  film: films[0],
+  isPlaying: false,
+  index: 0,
+};
+
+
 describe(`FilmCard e2e`, () => {
   it(`Hover callback get right information about card`, () => {
-    const mockFilm = films[0];
-    const mockIsPlaying = false;
-    const mockIndex = 13;
-    const cardMouseEnterHandler = jest.fn((index) => {
+    const onCardMouseEnter = jest.fn((index) => {
       // eslint-disable-next-line no-console
       console.log(index);
     });
-    const cardMouseLeaveHandler = jest.fn();
+    const onCardMouseLeave = jest.fn();
 
     const filmCard = shallow(<FilmCard
-      title={mockFilm.title}
-      preview={mockFilm.preview}
-      poster={mockFilm.poster}
-      isPlaying={mockIsPlaying}
-      index={mockIndex}
-      onCardMouseEnter={cardMouseEnterHandler}
-      onCardMouseLeave={cardMouseLeaveHandler}
+      title={mock.film.name}
+      previewImage={mock.film.previewImage}
+      previewVideoLink={mock.film.previewVideoLink}
+      isPlaying={mock.isPlaying}
+      index={mock.index}
+      onCardMouseEnter={onCardMouseEnter}
+      onCardMouseLeave={onCardMouseLeave}
     />);
 
     filmCard
       .simulate(`mouseenter`);
 
-    expect(cardMouseEnterHandler).toHaveBeenCalledTimes(1);
+    expect(onCardMouseEnter).toHaveBeenCalledTimes(1);
   });
 });

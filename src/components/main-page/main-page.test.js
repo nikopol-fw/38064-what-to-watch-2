@@ -1,22 +1,26 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {GenreList} from './genre-list';
+import {films} from '../../mocks/films';
+
+import {MainPage} from './main-page';
 
 
 const mock = {
   activeGenre: `All genres`,
+  films,
   genres: [`All genres`, `Crime`, `Adventure`, `Comedy`],
-  onLinkClick: () => {},
+  onGenreLinkClick: () => {},
 };
 
 
-it(`GenreList correctly renders after relaunch`, () => {
+it(`MainPage correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<GenreList
+    .create(<MainPage
       activeGenre={mock.activeGenre}
+      films={mock.films}
       genres={mock.genres}
-      onLinkClick={mock.onLinkClick}
+      onGenreLinkClick={mock.onGenreLinkClick}
     />)
     .toJSON();
 
