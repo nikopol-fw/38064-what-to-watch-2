@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 
 import {ActionCreator} from '../../reducer/user/user';
@@ -108,14 +107,6 @@ const MainPage = (props) => {
     </footer>
   </div>;
   // </div>
-};
-
-
-MainPage.propTypes = {
-  activeGenre: PropTypes.string.isRequired,
-  films: PropTypes.array.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onGenreLinkClick: PropTypes.func.isRequired,
 };
 
 

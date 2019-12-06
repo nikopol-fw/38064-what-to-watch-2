@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
 
 
@@ -34,11 +33,6 @@ const Layout = (props) => {
       {children}
     </div>
   </React.Fragment>;
-};
-
-
-Layout.propTypes = {
-  children: PropTypes.element,
 };
 
 

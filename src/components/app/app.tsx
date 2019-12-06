@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React  from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import {withLayout} from '../../hocs/with-layout/with-layout';
@@ -39,20 +38,4 @@ const App = () => {
 };
 
 
-App.propTypes = {
-
-};
-
-
 export {App};
-
-// getPageScreen.propTypes = {
-//   films: PropTypes.array.isRequired,
-//   film: PropTypes.shape({
-//     title: PropTypes.string.isRequired,
-//     genre: PropTypes.string.isRequired,
-//     releaseYear: PropTypes.string.isRequired,
-//     posterImg: PropTypes.string.isRequired,
-//     coverImg: PropTypes.string.isRequired,
-//   })
-// };
