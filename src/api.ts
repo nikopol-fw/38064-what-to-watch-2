@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios, {AxiosInstance} from 'axios';
 
 
-export const createAPI = () => {
+export const createAPI = (): AxiosInstance => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-2.appspot.com/wtw`,
     timeout: 5000,

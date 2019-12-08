@@ -1,11 +1,13 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 
-class GenreList extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+interface Props {
+  activeGenre: string;
+  genres: string[];
+  onLinkClick: (genre: string) => void;
+}
+
+class GenreList extends React.PureComponent<Props> {
 
   onGenreLinkClick(genre) {
     return (evt) => {
@@ -28,13 +30,6 @@ class GenreList extends PureComponent {
     </ul>;
   }
 }
-
-
-GenreList.propTypes = {
-  activeGenre: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onLinkClick: PropTypes.func.isRequired,
-};
 
 
 export {GenreList};

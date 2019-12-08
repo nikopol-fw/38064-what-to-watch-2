@@ -1,8 +1,14 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 
 
-const withActiveItem = (Component) => {
-  class WithActiveItem extends PureComponent {
+interface State {
+  activeCard: number;
+}
+
+export const withActiveItem = (Component) => {
+  type T = React.ComponentProps<typeof Component>;
+
+  class WithActiveItem extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -37,11 +43,5 @@ const withActiveItem = (Component) => {
   }
 
 
-  WithActiveItem.propTypes = {};
-
-
   return WithActiveItem;
 };
-
-
-export default withActiveItem;

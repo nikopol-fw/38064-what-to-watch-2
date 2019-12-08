@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
 
 
-export const Login = (props) => {
+export const Login: React.FC = () => {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -53,9 +52,4 @@ export const Login = (props) => {
       </footer>
     </div>
   );
-};
-
-
-Login.propTypes = {
-
 };

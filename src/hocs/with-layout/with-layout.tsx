@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 
 import {Layout} from '../../components/layout/layout';
 
 
-const withLayout = (Component) => {
-  const WithLayout = (props) => (
+export const withLayout = (Component) => {
+  const WithLayout: React.FC = (props) => (
     <Layout>
       <Component {...props} />
     </Layout>
@@ -12,6 +12,3 @@ const withLayout = (Component) => {
 
   return WithLayout;
 };
-
-
-export {withLayout};
