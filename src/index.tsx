@@ -9,7 +9,6 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {createAPI} from './api';
 import reducer from './reducer';
 import {Operation as DataOperation} from './reducer/data/data';
-import {Operation as UserOperation} from './reducer/user/user';
 import {App} from './components/app/app';
 
 
@@ -23,8 +22,8 @@ const init = (): void => {
       )
   );
 
+  // store.dispatch(DataOperation.authenticate());
   store.dispatch(DataOperation.loadFilms());
-  store.dispatch(UserOperation.authorize());
 
   ReactDOM.render(<Provider store={store}>
     <Router>
