@@ -29,9 +29,7 @@ export class LoginForm extends React.PureComponent<Props, null> {
       password: form[`password`].value,
     };
 
-    this.props.onAuthorize(formData)
-      .then(() => this.props.history.push(`/`));
-
+    this.props.onAuthorize(formData);
   }
 
   render() {

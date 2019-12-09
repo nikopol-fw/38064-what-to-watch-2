@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 
 import {User} from "../../models/User";
 import {getUserInfo} from "../../reducer/data/selectors";
@@ -12,6 +12,18 @@ import {Login} from '../pages/login/login';
 
 const MainPageWrapped = withLayout(MainPage);
 
+const PrivateRoute = ({component: Component, isAuth, ...rest}) => (
+  <Route {...rest}
+    render={(props) => (
+      isAuth ? (
+        <Redirect to="/"/>
+      ) : (
+        <Component {...props} />
+      )
+    )}
+  />
+);
+
 interface Props {
   user: User;
 }
@@ -21,7 +33,7 @@ export const App: React.FC<Props> = (props) => {
 
   return <Switch>
     <Route path="/" exact render={(mainPageProps) => <MainPageWrapped {...mainPageProps} user={user} />}/>
-    <Route path="/login" component={Login}/>
+    <PrivateRoute path="/login" component={Login} isAuth={!!user.id}/>
     <Route path="/films/:id" component={FilmPage}/>
   </Switch>;
 };
