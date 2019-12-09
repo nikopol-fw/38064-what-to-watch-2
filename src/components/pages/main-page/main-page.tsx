@@ -19,44 +19,37 @@ interface Props {
   onGenreLinkClick: () => void;
 }
 
-export const MainPage: React.FC<Props> = (props) => {
-  const {activeGenre, films, genres, onGenreLinkClick} = props;
+export class MainPage extends React.PureComponent<Props> {
 
-  return <div>
-    <section className="catalog">
-      <h2 className="catalog__title visually-hidden">Catalog</h2>
+  constructor(props: Props) {
+    super(props);
+  }
 
-      <GenreList
-        activeGenre={activeGenre}
-        genres={genres}
-        onLinkClick={onGenreLinkClick}
-      />
+  render() {
+    const {activeGenre, films, genres, onGenreLinkClick} = this.props;
 
-      <FilmsListWrapped
-        activeGenre={activeGenre}
-        films={films}
-      />
+    return (
+      <section className="catalog">
+        <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <div className="catalog__more">
-        <button className="catalog__button" type="button">Show more</button>
-      </div>
-    </section>
+        <GenreList
+          activeGenre={activeGenre}
+          genres={genres}
+          onLinkClick={onGenreLinkClick}
+        />
 
-    <footer className="page-footer">
-      <div className="logo">
-        <a className="logo__link logo__link--light">
-          <span className="logo__letter logo__letter--1">W</span>
-          <span className="logo__letter logo__letter--2">T</span>
-          <span className="logo__letter logo__letter--3">W</span>
-        </a>
-      </div>
+        <FilmsListWrapped
+          activeGenre={activeGenre}
+          films={films}
+        />
 
-      <div className="copyright">
-        <p>© 2019 What to watch Ltd.</p>
-      </div>
-    </footer>
-  </div>;
-};
+        <div className="catalog__more">
+          <button className="catalog__button" type="button">Show more</button>
+        </div>
+      </section>
+    );
+  }
+}
 
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {

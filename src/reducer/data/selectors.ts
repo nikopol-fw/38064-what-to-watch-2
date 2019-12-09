@@ -5,7 +5,10 @@ import NameSpace from '../name-spaces';
 
 const NAME_SPACE = NameSpace.DATA;
 
+const getFavorites = (state) => state[NAME_SPACE].favorites;
 const getFilms = (state) => state[NAME_SPACE].films;
+const getPromo = (state) => state[NAME_SPACE].promo;
+const getUserInfo = (state) => state[NAME_SPACE].user;
 
 const getGenres = createSelector(
     getFilms,
@@ -24,14 +27,11 @@ const getGenres = createSelector(
     }
 );
 
-const getUserInfo = (state) => state[NAME_SPACE].user;
-
-const getFavorites = (state) => state[NAME_SPACE].favorites;
-
 
 export {
   getFavorites,
   getFilms,
   getGenres,
+  getPromo,
   getUserInfo,
 };

@@ -1,16 +1,13 @@
 import * as React from 'react';
 
-import {User} from "../../models/User";
-import {Layout} from '../../components/layout/layout';
-
 
 interface Props {
-  user: User;
+  layoutProps: any;
 }
 
-export const withLayout = (Component) => {
+export const withLayout = (Component, Layout) => {
   const WithLayout: React.FC<Props> = (props) => (
-    <Layout user={props.user}>
+    <Layout {...props.layoutProps}>
       <Component {...props} />
     </Layout>
   );

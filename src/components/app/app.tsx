@@ -9,9 +9,10 @@ import MainPage from '../pages/main-page/main-page';
 import {FilmPage} from '../pages/film-page/film-page';
 import {Login} from '../pages/login/login';
 import MyList from "../pages/my-list/my-list";
+import LayoutMainPage from "../layout-main-page/layout-main-page";
 
 
-const MainPageWrapped = withLayout(MainPage);
+const MainPageWrapped = withLayout(MainPage, LayoutMainPage);
 
 interface PrivateRouteProps {
   component: React.ComponentType;
@@ -44,7 +45,7 @@ export const App: React.FC<Props> = (props) => {
 
   return <Switch>
     <Route path="/" exact
-      render={(mainPageProps): React.ReactNode => <MainPageWrapped {...mainPageProps} user={user} />}
+      render={(mainPageProps): React.ReactNode => <MainPageWrapped {...mainPageProps} layoutProps={{user}}/>}
     />
     <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
     <PrivateRoute path="/login" component={Login} is={!isLogin} redirectTo={`/`}/>

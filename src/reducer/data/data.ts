@@ -10,6 +10,7 @@ import {Film} from "../../models/Film";
 const initialState = {
   favorites: [],
   films: [],
+  promo: null,
   user: {},
 };
 
@@ -17,6 +18,7 @@ const initialState = {
 const ActionType = {
   LOAD_FAVORITES: `LOAD_FAVORITES`,
   LOAD_FILMS: `LOAD_FILMS`,
+  LOAD_PROMO: `LOAD_PROMO`,
   UPDATE_USER_INFO: `UPDATE_USER_INFO`,
 };
 
@@ -29,6 +31,10 @@ const ActionCreator = {
   loadFilms: (films: Film[]) => ({
     type: ActionType.LOAD_FILMS,
     payload: films,
+  }),
+  loadPromo: (promo: Film) => ({
+    type: ActionType.LOAD_PROMO,
+    payload: promo,
   }),
   updateUserInfo: (userData: User) => ({
     type: ActionType.UPDATE_USER_INFO,
@@ -53,6 +59,7 @@ const Operation = {
         }
       });
   },
+
   authorize: (formData: FormLogin) => (dispatch, _getState, api: AxiosInstance) => {
     return api.post(`/login`, formData)
       .then((response: AxiosResponse<LoginApiData>) => {
@@ -68,6 +75,7 @@ const Operation = {
         }
       });
   },
+
   loadFavorites: () => (dispatch, _getState, api: AxiosInstance) => {
     return api.get(`/favorite`)
       .then((response) => {
@@ -77,12 +85,22 @@ const Operation = {
         }
       });
   },
+
   loadFilms: () => (dispatch, _getState, api: AxiosInstance) => {
     return api.get(`/films`)
       .then((response) => {
         response.data = response.data.map((film: any) => keysToCamel(film));
         dispatch(ActionCreator.loadFilms(response.data));
       });
+  },
+
+  loadPromo: () => (dispatch, _getState, api: AxiosInstance) => {
+    return api.get(`/films/promo`).then((response) => {
+      if (response.status === 200) {
+        response.data = keysToCamel(response.data);
+        dispatch(ActionCreator.loadPromo(response.data));
+      }
+    });
   },
 };
 
@@ -97,6 +115,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FILMS:
       return Object.assign({}, state, {
         films: action.payload,
+      });
+
+    case ActionType.LOAD_PROMO:
+      return Object.assign({}, state, {
+        promo: action.payload,
       });
 
     case ActionType.UPDATE_USER_INFO:
