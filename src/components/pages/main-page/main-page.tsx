@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
+import {Film} from "../../../models/Film";
 import {ActionCreator} from '../../../reducer/user/user';
-import {getFilms, getGenres} from '../../../reducer/data/selectors';
 import {getActiveGenre} from '../../../reducer/user/selectors';
-
+import {getFilms, getGenres} from '../../../reducer/data/selectors';
 import {withActiveItem} from '../../../hocs/with-active-item/with-active-item';
 import {FilmsList} from '../../films-list/films-list';
 import {GenreList} from '../../genre-list/genre-list';
@@ -14,7 +14,7 @@ const FilmsListWrapped = withActiveItem(FilmsList);
 
 interface Props {
   activeGenre: string;
-  films: [];
+  films: Film[];
   genres: string[];
   onGenreLinkClick: () => void;
 }

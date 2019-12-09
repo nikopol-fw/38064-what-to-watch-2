@@ -26,8 +26,11 @@ const getGenres = createSelector(
 
 const getUserInfo = (state) => state[NAME_SPACE].user;
 
+const getFavorites = (state) => state[NAME_SPACE].favorites;
+
 
 export {
+  getFavorites,
   getFilms,
   getGenres,
   getUserInfo,

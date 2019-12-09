@@ -2,14 +2,13 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 
 import {User} from "../../models/User";
-import {PropsWithChildren} from "react";
 
 
 interface Props {
   user: User;
 }
 
-const Layout: React.FC<Props> = (props: PropsWithChildren<Props>) => {
+const Layout: React.FC<Props> = (props) => {
   const {user, children} = props;
 
   return <React.Fragment>

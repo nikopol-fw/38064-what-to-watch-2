@@ -8,21 +8,24 @@ import {withLayout} from '../../hocs/with-layout/with-layout';
 import MainPage from '../pages/main-page/main-page';
 import {FilmPage} from '../pages/film-page/film-page';
 import {Login} from '../pages/login/login';
-import {MyList} from "../pages/my-list/my-list";
+import MyList from "../pages/my-list/my-list";
 
 
 const MainPageWrapped = withLayout(MainPage);
 
-interface Props {
+interface PrivateRouteProps {
+  component: React.ComponentType;
   is: boolean;
+  path: string;
   redirectTo: string;
+  data?: any;
 }
 
-const PrivateRoute = ({component: Component, is, redirectTo, ...rest}) => (
+const PrivateRoute: React.FC<PrivateRouteProps> = ({component: Component, is, redirectTo, data, ...rest}) => (
   <Route {...rest}
     render={(props) => (
       is ? (
-        <Component {...props} />
+        <Component {...props} {...data} />
       ) : (
         <Redirect to={redirectTo}/>
       )
@@ -40,9 +43,11 @@ export const App: React.FC<Props> = (props) => {
   const isLogin = !!user.id;
 
   return <Switch>
-    <Route path="/" exact render={(mainPageProps) => <MainPageWrapped {...mainPageProps} user={user} />}/>
+    <Route path="/" exact
+      render={(mainPageProps): React.ReactNode => <MainPageWrapped {...mainPageProps} user={user} />}
+    />
+    <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
     <PrivateRoute path="/login" component={Login} is={!isLogin} redirectTo={`/`}/>
-    <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`}/>
     <Route path="/films/:id" component={FilmPage}/>
   </Switch>;
 };
