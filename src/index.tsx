@@ -9,7 +9,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {createAPI} from './api';
 import reducer from './reducer';
 import {Operation as DataOperation} from './reducer/data/data';
-import {App} from './components/app/app';
+import App from './components/app/app';
 
 
 const init = (): void => {
@@ -22,7 +22,7 @@ const init = (): void => {
       )
   );
 
-  // store.dispatch(DataOperation.authenticate());
+  store.dispatch(DataOperation.authenticate());
   store.dispatch(DataOperation.loadFilms());
 
   ReactDOM.render(<Provider store={store}>

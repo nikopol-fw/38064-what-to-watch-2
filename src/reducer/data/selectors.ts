@@ -24,8 +24,11 @@ const getGenres = createSelector(
     }
 );
 
+const getUserInfo = (state) => state[NAME_SPACE].user;
+
 
 export {
   getFilms,
   getGenres,
+  getUserInfo,
 };

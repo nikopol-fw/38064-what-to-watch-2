@@ -1,9 +1,16 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
+import {User} from "../../models/User";
+import {PropsWithChildren} from "react";
 
-const Layout = (props) => {
-  const {children} = props;
+
+interface Props {
+  user: User;
+}
+
+const Layout: React.FC<Props> = (props: PropsWithChildren<Props>) => {
+  const {user, children} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -23,7 +30,14 @@ const Layout = (props) => {
         </div>
 
         <div className="user-block">
-          <Link to="/login" className="user-block__link">Sign in</Link>
+          {user && user.id
+            ? (
+              <div className="user-block__avatar">
+                <img src={`https://htmlacademy-react-2.appspot.com${user.avatar}`} alt={user.name} width="63" height="63"/>
+              </div>
+            )
+            : <Link to="/login" className="user-block__link">Sign in</Link>
+          }
         </div>
       </header>
     </section>

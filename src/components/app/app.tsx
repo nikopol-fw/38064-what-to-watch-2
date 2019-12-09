@@ -1,21 +1,34 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 
+import {User} from "../../models/User";
+import {getUserInfo} from "../../reducer/data/selectors";
 import {withLayout} from '../../hocs/with-layout/with-layout';
-import MainPage from '../main-page/main-page';
+import MainPage from '../pages/main-page/main-page';
 import {FilmPage} from '../pages/film-page/film-page';
 import {Login} from '../pages/login/login';
 
 
 const MainPageWrapped = withLayout(MainPage);
 
-const App: React.FC = () => {
+interface Props {
+  user: User;
+}
+
+export const App: React.FC<Props> = (props) => {
+  const {user} = props;
+
   return <Switch>
-    <Route path="/" exact component={MainPageWrapped}/>
+    <Route path="/" exact render={(mainPageProps) => <MainPageWrapped {...mainPageProps} user={user} />}/>
     <Route path="/login" component={Login}/>
     <Route path="/films/:id" component={FilmPage}/>
   </Switch>;
 };
 
 
-export {App};
+const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  user: getUserInfo(state),
+});
+
+export default connect(mapStateToProps)(App);

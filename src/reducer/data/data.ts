@@ -13,24 +13,19 @@ const initialState = {
 
 
 const ActionType = {
-  AUTHENTICATE: `AUTHENTICATE`,
-  AUTHORIZE: `AUTHORIZE`,
   LOAD_FILMS: `LOAD_FILMS`,
+  UPDATE_USER_INFO: `UPDATE_USER_INFO`,
 };
 
 
 const ActionCreator = {
-  authentication: (is) => ({
-    type: ActionType.AUTHENTICATE,
-    // payload: userData,
-  }),
-  authorize: (data: User) => ({
-    type: ActionType.AUTHORIZE,
-    payload: data,
-  }),
   loadFilms: (films) => ({
     type: ActionType.LOAD_FILMS,
     payload: films,
+  }),
+  updateUserInfo: (userData: User) => ({
+    type: ActionType.UPDATE_USER_INFO,
+    payload: userData,
   }),
 };
 
@@ -39,7 +34,16 @@ const Operation = {
   authenticate: () => (dispatch, _getState, api: AxiosInstance) => {
     return api.get(`/login`)
       .then((response) => {
-        console.log(response);
+        if (response.status === 200) {
+          const data = response.data;
+          const UserInfo: User = {
+            avatar: data[`avatar_url`],
+            email: data[`email`],
+            id: data[`id`],
+            name: data[`name`],
+          };
+          dispatch(ActionCreator.updateUserInfo(UserInfo));
+        }
       });
   },
   authorize: (formData: FormLogin) => (dispatch, _getState, api: AxiosInstance) => {
@@ -53,7 +57,7 @@ const Operation = {
             id: data[`id`],
             name: data[`name`],
           };
-          dispatch(ActionCreator.authorize(UserInfo));
+          dispatch(ActionCreator.updateUserInfo(UserInfo));
         }
       });
   },
@@ -69,19 +73,14 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.AUTHENTICATE:
-      return Object.assign({}, state, {
-        // isAuth: action.
-      });
-
-    case ActionType.AUTHORIZE:
-      return Object.assign({}, state, {
-        user: action.payload,
-      });
-
     case ActionType.LOAD_FILMS:
       return Object.assign({}, state, {
         films: action.payload,
+      });
+
+    case ActionType.UPDATE_USER_INFO:
+      return Object.assign({}, state, {
+        user: action.payload,
       });
   }
 
