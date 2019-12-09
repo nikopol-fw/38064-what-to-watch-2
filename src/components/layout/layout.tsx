@@ -33,7 +33,9 @@ const Layout: React.FC<Props> = (props: PropsWithChildren<Props>) => {
           {user && user.id
             ? (
               <div className="user-block__avatar">
-                <img src={`https://htmlacademy-react-2.appspot.com${user.avatar}`} alt={user.name} width="63" height="63"/>
+                <Link to="/mylist">
+                  <img src={`https://htmlacademy-react-2.appspot.com${user.avatar}`} alt={user.name} width="63" height="63"/>
+                </Link>
               </div>
             )
             : <Link to="/login" className="user-block__link">Sign in</Link>
