@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {films} from '../../mocks/films';
+import {films} from '../../../mocks/films';
 
 import {MainPage} from './main-page';
 
@@ -10,7 +10,7 @@ const mock = {
   activeGenre: `All genres`,
   films,
   genres: [`All genres`, `Crime`, `Adventure`, `Comedy`],
-  onGenreLinkClick: () => {},
+  onGenreLinkClick: () => void (0),
 };
 
 

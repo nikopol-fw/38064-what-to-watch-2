@@ -1,7 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-export const FilmPage = (props) => {
+
+interface Props {
+  title: string;
+  genre: string;
+  releaseYear: number;
+  posterImg: string;
+  coverImg: string;
+}
+
+export const FilmPage: React.FC<Props> = (props) => {
   const {title, genre, releaseYear, posterImg, coverImg} = props;
 
   return <React.Fragment>
@@ -165,12 +173,4 @@ export const FilmPage = (props) => {
       </footer>
     </div>
   </React.Fragment>;
-};
-
-FilmPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseYear: PropTypes.number.isRequired,
-  posterImg: PropTypes.string.isRequired,
-  coverImg: PropTypes.string.isRequired,
 };

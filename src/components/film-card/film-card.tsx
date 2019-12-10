@@ -1,10 +1,22 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
 import {VideoPlayer} from '../video-player/video-player';
 
 
-class FilmCard extends PureComponent {
+interface Props {
+  title: string;
+  previewImage: string;
+  previewVideoLink: string;
+  isPlaying: boolean;
+  index: number;
+  onCardMouseEnter: (ind: number) => void;
+  onCardMouseLeave: () => void;
+}
+
+export class FilmCard extends React.PureComponent<Props, null> {
+
+  private readonly onCardMouserEnter: () => void;
+
   constructor(props) {
     super(props);
 
@@ -30,17 +42,3 @@ class FilmCard extends PureComponent {
     </article>;
   }
 }
-
-
-FilmCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  previewImage: PropTypes.string.isRequired,
-  previewVideoLink: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  index: PropTypes.number.isRequired,
-  onCardMouseEnter: PropTypes.func.isRequired,
-  onCardMouseLeave: PropTypes.func.isRequired,
-};
-
-
-export {FilmCard};

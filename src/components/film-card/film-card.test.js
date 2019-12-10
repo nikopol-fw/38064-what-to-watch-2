@@ -10,8 +10,8 @@ const mock = {
   film: films[0],
   isPlaying: false,
   index: 0,
-  onCardMouseEnter: () => {},
-  onCardMouseLeave: () => {},
+  onCardMouseEnter: () => void (0),
+  onCardMouseLeave: () => void (0),
 };
 
 it(`FilmCard correctly renders after relaunch`, () => {

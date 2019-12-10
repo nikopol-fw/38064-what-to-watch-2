@@ -7,7 +7,7 @@ import {GenreList} from './genre-list';
 const mock = {
   activeGenre: `All genres`,
   genres: [`All genres`, `Crime`, `Adventure`, `Comedy`],
-  onLinkClick: () => {},
+  onLinkClick: () => void (0),
 };
 
 
