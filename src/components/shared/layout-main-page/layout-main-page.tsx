@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-import {User} from "../../models/User";
-import {Operation} from "../../reducer/data/data";
+import {User} from "../../../models/User";
+import {Operation} from "../../../reducer/data/data";
 import {connect} from "react-redux";
-import {Film} from "../../models/Film";
-import {getPromo} from "../../reducer/data/selectors";
+import {Film} from "../../../models/Film";
+import {getPromo} from "../../../reducer/data/selectors";
+import {Footer} from "../footer/footer";
+import {Header} from "../header/header";
 
 
 interface Props {
@@ -44,28 +46,7 @@ export class LayoutMainPage extends React.PureComponent<Props> {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header">
-            <div className="logo">
-              <a className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="user-block">
-              {user.id ? (
-                <div className="user-block__avatar">
-                  <Link to="/mylist">
-                    <img src={`https://htmlacademy-react-2.appspot.com${user.avatar}`} alt={user.name} width="63" height="63"/>
-                  </Link>
-                </div>
-              ) :
-                <Link to="/login" className="user-block__link">Sign in</Link>
-              }
-            </div>
-          </header>
-
+          <Header avatar={user.avatar} isAuth={!!(user && user.id)} name={user.name}/>
 
           <div className="movie-card__wrap">
             <div className="movie-card__info">
@@ -110,19 +91,7 @@ export class LayoutMainPage extends React.PureComponent<Props> {
         <div className="page-content">
           {children}
 
-          <footer className="page-footer">
-            <div className="logo">
-              <Link to="/" className="logo__link logo__link--light">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
-            </div>
-
-            <div className="copyright">
-              <p>© 2019 What to watch Ltd.</p>
-            </div>
-          </footer>
+          <Footer/>
         </div>
       </React.Fragment>
     );

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 
 interface State {
-  activeCard: number;
+  activeItem: number;
 }
 
 export const withActiveItem = (Component) => {
@@ -12,32 +12,32 @@ export const withActiveItem = (Component) => {
     constructor(props) {
       super(props);
 
-      this.setActiveState = this.setActiveState.bind(this);
+      this.setActiveItem = this.setActiveItem.bind(this);
       this.resetState = this.resetState.bind(this);
 
       this.state = {
-        activeCard: -1,
+        activeItem: -1,
       };
     }
 
-    setActiveState(ind) {
+    setActiveItem(ind) {
       this.setState({
-        activeCard: ind,
+        activeItem: ind,
       });
     }
 
     resetState() {
       this.setState({
-        activeCard: -1,
+        activeItem: -1,
       });
     }
 
     render() {
       return <Component
         {...this.props}
-        activeCard = {this.state.activeCard}
-        setActiveCard = {this.setActiveState}
-        resetActiveCard = {this.resetState}
+        activeItem = {this.state.activeItem}
+        setActiveItem = {this.setActiveItem}
+        resetActiveItem = {this.resetState}
       />;
     }
   }

@@ -1,9 +1,11 @@
 import * as React from 'react';
 
 import {VideoPlayer} from '../video-player/video-player';
+import {Link} from "react-router-dom";
 
 
 interface Props {
+  id: number;
   title: string;
   previewImage: string;
   previewVideoLink: string;
@@ -24,7 +26,7 @@ export class FilmCard extends React.PureComponent<Props, null> {
   }
 
   render() {
-    const {title, previewImage, previewVideoLink, isPlaying, onCardMouseLeave} = this.props;
+    const {id, title, previewImage, previewVideoLink, isPlaying, onCardMouseLeave} = this.props;
 
     return <article className="small-movie-card catalog__movies-card"
       onMouseEnter={this.onCardMouserEnter}
@@ -37,7 +39,7 @@ export class FilmCard extends React.PureComponent<Props, null> {
         />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="/films">{title}</a>
+        <Link to={`/films/${id}`} className="small-movie-card__link">{title}</Link>
       </h3>
     </article>;
   }

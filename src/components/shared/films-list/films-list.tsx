@@ -1,15 +1,15 @@
 import * as React from 'react';
 
-import {Film} from "../../models/Film";
+import {Film} from "../../../models/Film";
 import {FilmCard} from '../film-card/film-card';
 
 
 interface Props {
   activeGenre: string;
   films: Film[];
-  activeCard?: number;
-  setActiveCard: (ind: number) => void;
-  resetActiveCard: () => void;
+  activeItem?: number;
+  setActiveItem: (ind: number) => void;
+  resetActiveItem: () => void;
 }
 
 export class FilmsList extends React.PureComponent<Props, null> {
@@ -25,27 +25,36 @@ export class FilmsList extends React.PureComponent<Props, null> {
     this.onCardMouseLeaver = this.onCardMouseLeaver.bind(this);
   }
 
-  onCardMouseEnter(ind) {
-    this.delayTimer = window.setTimeout(() => {
-      this.props.setActiveCard(ind);
-    }, FilmsList.VIDEO_PLAY_DELAY);
+  componentWillUnmount() {
+    this.clearTimer();
   }
 
-  onCardMouseLeaver() {
+  clearTimer() {
     if (this.delayTimer) {
       clearTimeout(this.delayTimer);
       this.delayTimer = null;
     }
-    this.props.resetActiveCard();
+  }
+
+  onCardMouseEnter(ind) {
+    this.delayTimer = window.setTimeout(() => {
+      this.props.setActiveItem(ind);
+    }, FilmsList.VIDEO_PLAY_DELAY);
+  }
+
+  onCardMouseLeaver() {
+    this.clearTimer();
+    this.props.resetActiveItem();
   }
 
   render() {
-    const {activeGenre, films, activeCard} = this.props;
+    const {activeGenre, films, activeItem: activeCard} = this.props;
 
     return <div className="catalog__movies-list">
       {activeGenre === `All genres`
         ? films
           .map((film, i) => <FilmCard key={`film-card-${i}`}
+            id={film.id}
             title={film.name}
             previewImage={film.previewImage}
             previewVideoLink={film.previewVideoLink}
@@ -57,6 +66,7 @@ export class FilmsList extends React.PureComponent<Props, null> {
         : films
           .filter((film) => film.genre === activeGenre)
           .map((film, i) => <FilmCard key={`film-card-${i}`}
+            id={film.id}
             title={film.name}
             previewImage={film.previewImage}
             previewVideoLink={film.previewVideoLink}

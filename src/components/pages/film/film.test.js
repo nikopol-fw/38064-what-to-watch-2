@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {films} from '../../../mocks/films';
 
-import {FilmPage} from './film-page';
+import {FilmPage} from './film';
 
 
 const mock = {

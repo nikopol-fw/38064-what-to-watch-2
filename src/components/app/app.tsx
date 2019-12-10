@@ -1,17 +1,16 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import {Router} from 'react-router-dom';
+import {Redirect, Route, Router, Switch} from 'react-router-dom';
 
 import {User} from "../../models/User";
 import history from "../../history";
 import {getUserInfo} from "../../reducer/user/selectors";
 import {withLayout} from '../../hocs/with-layout/with-layout';
-import MainPage from '../pages/main-page/main-page';
-import {FilmPage} from '../pages/film-page/film-page';
+import MainPage from '../pages/main/main';
+import FilmPage from '../pages/film/film';
 import {Login} from '../pages/login/login';
 import MyList from "../pages/my-list/my-list";
-import LayoutMainPage from "../layout-main-page/layout-main-page";
+import LayoutMainPage from "../shared/layout-main-page/layout-main-page";
 
 
 const MainPageWrapped = withLayout(MainPage, LayoutMainPage);
@@ -51,9 +50,9 @@ export const App: React.FC<Props> = (props) => {
         <Route path="/" exact
           render={(mainPageProps): React.ReactNode => <MainPageWrapped {...mainPageProps} layoutProps={{user}}/>}
         />
+        <Route path="/films/:id" exact component={FilmPage}/>
         <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
         <PrivateRoute path="/login" component={Login} is={!isLogin} redirectTo={`/`}/>
-        <Route path="/films/:id" component={FilmPage}/>
       </Switch>
     </Router>
   );

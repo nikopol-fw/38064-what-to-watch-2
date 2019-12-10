@@ -6,8 +6,8 @@ import {ActionCreator} from '../../../reducer/user/user';
 import {getActiveGenre} from '../../../reducer/user/selectors';
 import {getFilms, getGenres} from '../../../reducer/data/selectors';
 import {withActiveItem} from '../../../hocs/with-active-item/with-active-item';
-import {FilmsList} from '../../films-list/films-list';
-import {GenreList} from '../../genre-list/genre-list';
+import {FilmsList} from '../../shared/films-list/films-list';
+import {GenreList} from '../../shared/genre-list/genre-list';
 
 
 const FilmsListWrapped = withActiveItem(FilmsList);

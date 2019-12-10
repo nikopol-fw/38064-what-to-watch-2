@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import {films} from './../../mocks/films';
+import {films} from '../../../mocks/films';
 
 import {FilmCard} from './film-card';
 

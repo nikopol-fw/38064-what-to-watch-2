@@ -3,8 +3,8 @@ import {FormEvent} from "react";
 import {connect} from 'react-redux';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 
-import {FormLogin} from '../../models/FormLogin';
-import {Operation} from '../../reducer/user/user';
+import {FormLogin} from '../../../models/FormLogin';
+import {Operation} from '../../../reducer/user/user';
 
 
 interface Props extends RouteComponentProps<any> {
