@@ -10,6 +10,7 @@ import {loadState, saveState} from "./session";
 
 
 const preloadedState = loadState();
+// eslint-disable-next-line @typescript-eslint/no-use-before-define
 const api = createAPI((argument) => store.dispatch(argument));
 
 const store = createStore(
