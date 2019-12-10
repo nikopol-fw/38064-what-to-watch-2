@@ -5,7 +5,7 @@ import {Router} from 'react-router-dom';
 
 import {User} from "../../models/User";
 import history from "../../history";
-import {getUserInfo} from "../../reducer/data/selectors";
+import {getUserInfo} from "../../reducer/user/selectors";
 import {withLayout} from '../../hocs/with-layout/with-layout';
 import MainPage from '../pages/main-page/main-page';
 import {FilmPage} from '../pages/film-page/film-page';

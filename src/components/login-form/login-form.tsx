@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 
 import {FormLogin} from '../../models/FormLogin';
-import {Operation} from '../../reducer/data/data';
+import {Operation} from '../../reducer/user/user';
 
 
 interface Props extends RouteComponentProps<any> {

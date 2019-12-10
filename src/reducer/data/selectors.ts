@@ -8,7 +8,6 @@ const NAME_SPACE = NameSpace.DATA;
 const getFavorites = (state) => state[NAME_SPACE].favorites;
 const getFilms = (state) => state[NAME_SPACE].films;
 const getPromo = (state) => state[NAME_SPACE].promo;
-const getUserInfo = (state) => state[NAME_SPACE].user;
 
 const getGenres = createSelector(
     getFilms,
@@ -33,5 +32,4 @@ export {
   getFilms,
   getGenres,
   getPromo,
-  getUserInfo,
 };
