@@ -4,7 +4,6 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from "redux-devtools-extension";
-import {BrowserRouter as Router} from 'react-router-dom';
 
 import {createAPI} from './api';
 import reducer from './reducer';
@@ -14,7 +13,7 @@ import App from './components/app/app';
 
 const init = (): void => {
 
-  const api = createAPI();
+  const api = createAPI((...args) => store.dispatch(...args));
 
   const store = createStore(reducer,
       composeWithDevTools(
@@ -22,13 +21,12 @@ const init = (): void => {
       )
   );
 
+  // TODO добавить хранение store в sessionStorage
   store.dispatch(DataOperation.authenticate());
   store.dispatch(DataOperation.loadFilms());
 
   ReactDOM.render(<Provider store={store}>
-    <Router>
-      <App/>
-    </Router>
+    <App/>
   </Provider>,
   document.getElementById(`root`)
   );

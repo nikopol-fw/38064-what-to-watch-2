@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {Route, Switch, Redirect} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 
 import {User} from "../../models/User";
+import history from "../../history";
 import {getUserInfo} from "../../reducer/data/selectors";
 import {withLayout} from '../../hocs/with-layout/with-layout';
 import MainPage from '../pages/main-page/main-page';
@@ -43,14 +45,18 @@ export const App: React.FC<Props> = (props) => {
 
   const isLogin = !!user.id;
 
-  return <Switch>
-    <Route path="/" exact
-      render={(mainPageProps): React.ReactNode => <MainPageWrapped {...mainPageProps} layoutProps={{user}}/>}
-    />
-    <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
-    <PrivateRoute path="/login" component={Login} is={!isLogin} redirectTo={`/`}/>
-    <Route path="/films/:id" component={FilmPage}/>
-  </Switch>;
+  return (
+    <Router history={history}>
+      <Switch>
+        <Route path="/" exact
+          render={(mainPageProps): React.ReactNode => <MainPageWrapped {...mainPageProps} layoutProps={{user}}/>}
+        />
+        <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
+        <PrivateRoute path="/login" component={Login} is={!isLogin} redirectTo={`/`}/>
+        <Route path="/films/:id" component={FilmPage}/>
+      </Switch>
+    </Router>
+  );
 };
 
 
