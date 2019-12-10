@@ -10,7 +10,7 @@ const mock = {
   activeGenre: `All genres`,
   films,
   genres: [`All genres`, `Crime`, `Adventure`, `Comedy`],
-  onGenreLinkClick: () => {},
+  onGenreLinkClick: () => void (0),
 };
 
 

@@ -10,8 +10,8 @@ const mock = {
   activeGenre: `All genres`,
   films,
   activeCard: -1,
-  setActiveCard: () => {},
-  resetActiveCard: () => {},
+  setActiveCard: () => void (0),
+  resetActiveCard: () => void (0),
 };
 
 it(`FilmList correctly renders after relaunch`, () => {

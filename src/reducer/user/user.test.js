@@ -1,6 +1,11 @@
 import {ActionCreator, ActionType, reducer} from './user';
 
 
+const initialState = {
+  genre: `All genres`,
+  info: {},
+};
+
 const mock = {
   genreToChange: `Drama`,
 };
@@ -18,9 +23,7 @@ describe(`Action creators work correctly`, () => {
 
 describe(`Reducer works correctly`, () => {
   it(`Reducer without additional parameters should return initial state`, () => {
-    expect(reducer(undefined, {})).toEqual({
-      genre: `All genres`,
-    });
+    expect(reducer(undefined, {})).toEqual(initialState);
   });
 
   it(`Reducer should change genre by a given value`, () => {
