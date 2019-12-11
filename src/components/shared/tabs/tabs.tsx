@@ -69,7 +69,13 @@ export class Tabs extends React.PureComponent<Props> {
 
             case Tab.DETAILS:
               return (
-                <TabDetails/>
+                <TabDetails
+                  director={film.director}
+                  genre={film.genre}
+                  released={film.released}
+                  runTime={film.runTime}
+                  starring={film.starring}
+                />
               );
 
             case Tab.REVIEWS:

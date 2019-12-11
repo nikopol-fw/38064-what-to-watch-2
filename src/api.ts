@@ -13,7 +13,7 @@ export const createAPI = (dispatch): AxiosInstance => {
   const onSuccess = (response) => response;
 
   const onError = (error) => {
-    if (error.response.status === 401 || error.response.status === 403) {
+    if (error.response && (error.response.status === 401 || error.response.status === 403)) {
       history.push(`/login`);
     }
   };
