@@ -4,7 +4,7 @@ import {Film} from "../../../models/Film";
 
 import {TabOverview} from "../tab-overview/tab-overview";
 import {TabDetails} from "../tab-details/tab-details";
-import {TabReviews} from "../tab-reviews/tab-reviews";
+import TabReviews from "../tab-reviews/tab-reviews";
 
 
 enum Tab {
@@ -80,7 +80,9 @@ export class Tabs extends React.PureComponent<Props> {
 
             case Tab.REVIEWS:
               return (
-                <TabReviews/>
+                <TabReviews
+                  filmId={film.id}
+                />
               );
 
             default:

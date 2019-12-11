@@ -10,6 +10,7 @@ const getFavorites = (state) => state[NAME_SPACE].favorites;
 const getFilmById = (state, id: number): Film => state[NAME_SPACE].films.find((film: Film) => film.id === id);
 const getFilms = (state) => state[NAME_SPACE].films;
 const getPromo = (state) => state[NAME_SPACE].promo;
+const getReviews = (state) => state[NAME_SPACE].reviews;
 
 const getGenres = createSelector(
     getFilms,
@@ -35,4 +36,5 @@ export {
   getFilms,
   getGenres,
   getPromo,
+  getReviews,
 };
