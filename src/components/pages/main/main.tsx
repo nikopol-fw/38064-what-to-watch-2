@@ -2,9 +2,8 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 
 import {Film} from "../../../models/Film";
-import {ActionCreator} from '../../../reducer/user/user';
-import {getActiveGenre} from '../../../reducer/user/selectors';
-import {getFilms, getGenres} from '../../../reducer/data/selectors';
+import {ActionCreator} from '../../../reducer/data/data';
+import {getActiveGenre, getFilteredFilms, getGenres} from '../../../reducer/data/selectors';
 import {withActiveItem} from '../../../hocs/with-active-item/with-active-item';
 import {FilmsList} from '../../shared/films-list/films-list';
 import {GenreList} from '../../shared/genre-list/genre-list';
@@ -20,6 +19,11 @@ interface Props {
 }
 
 export class MainPage extends React.PureComponent<Props> {
+
+  static readonly defaultProps = {
+    films: [],
+    genres: [],
+  };
 
   constructor(props: Props) {
     super(props);
@@ -54,8 +58,8 @@ export class MainPage extends React.PureComponent<Props> {
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   activeGenre: getActiveGenre(state),
+  films: getFilteredFilms(state),
   genres: getGenres(state),
-  films: getFilms(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

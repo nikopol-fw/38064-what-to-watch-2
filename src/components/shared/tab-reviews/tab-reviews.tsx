@@ -16,7 +16,7 @@ interface Props {
 
 export class TabReviews extends React.PureComponent<Props> {
 
-  static defaultProps = {
+  static readonly defaultProps = {
     filmId: null,
     reviews: [],
   };

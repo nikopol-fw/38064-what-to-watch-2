@@ -8,12 +8,14 @@ import {keysToCamel} from '../../lib/keys-to-camel/keys-to-camel';
 const initialState = {
   favorites: [],
   films: [],
+  genre: `All genres`,
   promo: null,
   reviews: [],
 };
 
 
 const ActionType = {
+  CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FAVORITES: `LOAD_FAVORITES`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO: `LOAD_PROMO`,
@@ -23,6 +25,10 @@ const ActionType = {
 
 
 const ActionCreator = {
+  changeGenre: (genre) => ({
+    type: ActionType.CHANGE_GENRE,
+    payload: genre,
+  }),
   loadFavorites: (films: Film[]) => ({
     type: ActionType.LOAD_FAVORITES,
     payload: films,
@@ -104,6 +110,11 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.CHANGE_GENRE:
+      return Object.assign({}, state, {
+        genre: action.payload,
+      });
+
     case ActionType.LOAD_FAVORITES:
       return Object.assign({}, state, {
         favorites: action.payload,

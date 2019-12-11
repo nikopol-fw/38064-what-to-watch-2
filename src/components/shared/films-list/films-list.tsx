@@ -5,7 +5,6 @@ import {FilmCard} from '../film-card/film-card';
 
 
 interface Props {
-  activeGenre: string;
   films: Film[];
   activeItem?: number;
   setActiveItem: (ind: number) => void;
@@ -14,9 +13,9 @@ interface Props {
 
 export class FilmsList extends React.PureComponent<Props, null> {
 
-  private static readonly VIDEO_PLAY_DELAY = 1000;
-
   private delayTimer: number = null;
+
+  private static readonly VIDEO_PLAY_DELAY = 1000;
 
   constructor(props: Props) {
     super(props);
@@ -48,33 +47,22 @@ export class FilmsList extends React.PureComponent<Props, null> {
   }
 
   render() {
-    const {activeGenre, films, activeItem: activeCard} = this.props;
+    const {films, activeItem: activeCard} = this.props;
 
-    return <div className="catalog__movies-list">
-      {activeGenre === `All genres`
-        ? films
-          .map((film, i) => <FilmCard key={`film-card-${i}`}
-            id={film.id}
-            title={film.name}
-            previewImage={film.previewImage}
-            previewVideoLink={film.previewVideoLink}
-            isPlaying={i === activeCard}
-            index={i}
-            onCardMouseEnter={this.onCardMouseEnter}
-            onCardMouseLeave={this.onCardMouseLeaver}
-          />)
-        : films
-          .filter((film) => film.genre === activeGenre)
-          .map((film, i) => <FilmCard key={`film-card-${i}`}
-            id={film.id}
-            title={film.name}
-            previewImage={film.previewImage}
-            previewVideoLink={film.previewVideoLink}
-            isPlaying={i === activeCard}
-            index={i}
-            onCardMouseEnter={this.onCardMouseEnter}
-            onCardMouseLeave={this.onCardMouseLeaver}
-          />)}
-    </div>;
+    return (
+      <div className="catalog__movies-list">
+        {films.map((film, i) => <FilmCard key={`film-card-${i}`}
+          id={film.id}
+          title={film.name}
+          previewImage={film.previewImage}
+          previewVideoLink={film.previewVideoLink}
+          isPlaying={i === activeCard}
+          index={i}
+          onCardMouseEnter={this.onCardMouseEnter}
+          onCardMouseLeave={this.onCardMouseLeaver}
+        />)
+        }
+      </div>
+    );
   }
 }
