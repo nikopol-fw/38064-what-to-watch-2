@@ -4,7 +4,7 @@ import * as React from 'react';
 interface Props {
   activeGenre: string;
   genres: string[];
-  onLinkClick: (genre: string) => void;
+  setActiveGenre: (genre: string) => void;
 }
 
 class GenreList extends React.PureComponent<Props> {
@@ -12,7 +12,7 @@ class GenreList extends React.PureComponent<Props> {
   getClickGenreLinkHandler(genre) {
     return (evt) => {
       evt.preventDefault();
-      this.props.onLinkClick(genre);
+      this.props.setActiveGenre(genre);
     };
   }
 

@@ -9,15 +9,15 @@ export const withActiveItem = (Component) => {
   type T = React.ComponentProps<typeof Component>;
 
   class WithActiveItem extends React.PureComponent<T, State> {
+    state = {
+      activeItem: -1,
+    };
+
     constructor(props) {
       super(props);
 
       this.setActiveItem = this.setActiveItem.bind(this);
       this.resetState = this.resetState.bind(this);
-
-      this.state = {
-        activeItem: -1,
-      };
     }
 
     setActiveItem(ind) {
@@ -41,7 +41,6 @@ export const withActiveItem = (Component) => {
       />;
     }
   }
-
 
   return WithActiveItem;
 };
