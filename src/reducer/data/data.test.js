@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../../api';
 import {ActionCreator, ActionType, Operation} from './data';
 import {films} from '../../mocks/films';
-import {reducer} from '../user/user';
+import {reducer} from '../data/data';
 
 
 const mockInitialState = {
