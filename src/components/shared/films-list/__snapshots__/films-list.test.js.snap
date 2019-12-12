@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmList correctly renders after relaunch 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <video
+        height="175"
+        loop={true}
+        muted={true}
+        poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
+        preload="metadata"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/1"
+        onClick={[Function]}
+      >
+        Gangs of new york
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <video
+        height="175"
+        loop={true}
+        muted={true}
+        poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/war-of-the-worlds.jpg"
+        preload="metadata"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/2"
+        onClick={[Function]}
+      >
+        War of the Worlds
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <video
+        height="175"
+        loop={true}
+        muted={true}
+        poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/macbeth.jpg"
+        preload="metadata"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/3"
+        onClick={[Function]}
+      >
+        Macbeth
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <video
+        height="175"
+        loop={true}
+        muted={true}
+        poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/revenant.jpg"
+        preload="metadata"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/4"
+        onClick={[Function]}
+      >
+        The Revenant
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <video
+        height="175"
+        loop={true}
+        muted={true}
+        poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/johnny-english.jpg"
+        preload="metadata"
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/5"
+        onClick={[Function]}
+      >
+        Johnny English
+      </a>
+    </h3>
+  </article>
+</div>
+`;

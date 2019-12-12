@@ -1,25 +1,34 @@
 import {AxiosInstance} from "axios";
 
-import {keysToCamel} from '../../lib/keys-to-camel/keys-to-camel';
 import {Film} from "../../models/Film";
+import {Review} from "../../models/Review";
+import {keysToCamel} from '../../lib/keys-to-camel/keys-to-camel';
 
 
 const initialState = {
   favorites: [],
   films: [],
+  genre: `All genres`,
   promo: null,
+  reviews: [],
 };
 
 
 const ActionType = {
+  CHANGE_GENRE: `CHANGE_GENRE`,
   LOAD_FAVORITES: `LOAD_FAVORITES`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO: `LOAD_PROMO`,
+  LOAD_REVIEWS: `LOAD_REVIEWS`,
   SET_FAVORITE_STATUS: `SET_FAVORITE_STATUS`,
 };
 
 
 const ActionCreator = {
+  changeGenre: (genre) => ({
+    type: ActionType.CHANGE_GENRE,
+    payload: genre,
+  }),
   loadFavorites: (films: Film[]) => ({
     type: ActionType.LOAD_FAVORITES,
     payload: films,
@@ -31,6 +40,10 @@ const ActionCreator = {
   loadPromo: (promo: Film) => ({
     type: ActionType.LOAD_PROMO,
     payload: promo,
+  }),
+  loadReviews: (reviews: Review[]) => ({
+    type: ActionType.LOAD_REVIEWS,
+    payload: reviews,
   }),
   setFavoriteStatus: (isFavorite: boolean) => ({
     type: ActionType.SET_FAVORITE_STATUS,
@@ -70,6 +83,20 @@ const Operation = {
       });
   },
 
+  loadReviews: (filmId: number) => (dispatch, _getState, api: AxiosInstance) => {
+    return api.get(`/comments/${filmId}`)
+      .then((response) => {
+        if (response && response.status === 200) {
+          response.data = keysToCamel(response.data);
+          const reviews = response.data.map((review) => {
+            review.date = new Date(review.date);
+            return review;
+          });
+          dispatch(ActionCreator.loadReviews(reviews));
+        }
+      });
+  },
+
   setFavoriteStatus: (filmId: number, status: 0 | 1) => (dispatch, _getState, api: AxiosInstance) => {
     return api.post(`/favorite/${filmId}/${status}`)
       .then((response) => {
@@ -83,6 +110,11 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.CHANGE_GENRE:
+      return Object.assign({}, state, {
+        genre: action.payload,
+      });
+
     case ActionType.LOAD_FAVORITES:
       return Object.assign({}, state, {
         favorites: action.payload,
@@ -96,6 +128,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_PROMO:
       return Object.assign({}, state, {
         promo: action.payload,
+      });
+
+    case ActionType.LOAD_REVIEWS:
+      return Object.assign({}, state, {
+        reviews: action.payload,
       });
 
     case ActionType.SET_FAVORITE_STATUS:

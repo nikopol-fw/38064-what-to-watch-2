@@ -6,7 +6,7 @@ import {Film} from "../../../models/Film";
 import {User} from "../../../models/User";
 import {getFavorites} from "../../../reducer/data/selectors";
 import {withActiveItem} from "../../../hocs/with-active-item/with-active-item";
-import {FilmsList} from "../../films-list/films-list";
+import {FilmsList} from "../../shared/films-list/films-list";
 import {Operation} from "../../../reducer/data/data";
 
 
