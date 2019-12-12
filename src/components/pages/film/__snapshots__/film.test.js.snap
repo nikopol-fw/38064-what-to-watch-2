@@ -4,6 +4,11 @@ exports[`FilmPage correctly renders afters relaunch 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
+    style={
+      Object {
+        "backgroundColor": "#A6B7AC",
+      }
+    }
   >
     <div
       className="movie-card__hero"
@@ -13,7 +18,7 @@ Array [
       >
         <img
           alt="Gangs of new york"
-          src="img/https://htmlacademy-react-2.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg"
+          src="https://htmlacademy-react-2.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg"
         />
       </div>
       <h1
@@ -22,7 +27,7 @@ Array [
         WTW
       </h1>
       <header
-        className="page-header movie-card__head"
+        className="page-header"
       >
         <div
           className="logo"
@@ -30,6 +35,7 @@ Array [
           <a
             className="logo__link"
             href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -54,12 +60,17 @@ Array [
           <div
             className="user-block__avatar"
           >
-            <img
-              alt="User avatar"
-              height="63"
-              src="img/avatar.jpg"
-              width="63"
-            />
+            <a
+              href="/mylist"
+              onClick={[Function]}
+            >
+              <img
+                alt="alter.ego"
+                height="63"
+                src="https://htmlacademy-react-2.appspot.com/wtw/static/avatar/3.jpg"
+                width="63"
+              />
+            </a>
           </div>
         </div>
       </header>
@@ -147,7 +158,7 @@ Array [
           <img
             alt="Gangs of new york poster"
             height="327"
-            src="img/https://htmlacademy-react-2.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg"
+            src="https://htmlacademy-react-2.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg"
             width="218"
           />
         </div>
@@ -166,6 +177,7 @@ Array [
                 <a
                   className="movie-nav__link"
                   href="#"
+                  onClick={[Function]}
                 >
                   Overview
                 </a>
@@ -176,6 +188,7 @@ Array [
                 <a
                   className="movie-nav__link"
                   href="#"
+                  onClick={[Function]}
                 >
                   Details
                 </a>
@@ -186,6 +199,7 @@ Array [
                 <a
                   className="movie-nav__link"
                   href="#"
+                  onClick={[Function]}
                 >
                   Reviews
                 </a>
@@ -198,7 +212,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              8,9
+              8,8
             </div>
             <p
               className="movie-rating__meta"
@@ -206,12 +220,13 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Very good
+                very good
               </span>
               <span
                 className="movie-rating__count"
               >
-                240 ratings
+                370881
+                 ratings
               </span>
             </p>
           </div>
@@ -219,23 +234,22 @@ Array [
             className="movie-card__text"
           >
             <p>
-              In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
-            </p>
-            <p>
-              Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
+              In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.
             </p>
             <p
               className="movie-card__director"
             >
               <strong>
-                Director: Wes Andreson
+                Director: 
+                Martin Scorsese
               </strong>
             </p>
             <p
               className="movie-card__starring"
             >
               <strong>
-                Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other
+                Starring: 
+                Leonardo DiCaprio, Cameron Diaz, Daniel Day-Lewis
               </strong>
             </p>
           </div>
@@ -259,14 +273,19 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+            <video
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              loop={true}
+              muted={true}
+              poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
+              preload="metadata"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
               width="280"
             />
           </div>
@@ -275,22 +294,28 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/1"
+              onClick={[Function]}
             >
-              Fantastic Beasts: The Crimes of Grindelwald
+              Gangs of new york
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Bohemian Rhapsody"
+            <video
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              loop={true}
+              muted={true}
+              poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/war-of-the-worlds.jpg"
+              preload="metadata"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
               width="280"
             />
           </div>
@@ -299,22 +324,28 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/2"
+              onClick={[Function]}
             >
-              Bohemian Rhapsody
+              War of the Worlds
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Macbeth"
+            <video
               height="175"
-              src="img/macbeth.jpg"
+              loop={true}
+              muted={true}
+              poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/macbeth.jpg"
+              preload="metadata"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -323,7 +354,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/3"
+              onClick={[Function]}
             >
               Macbeth
             </a>
@@ -331,14 +363,19 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Aviator"
+            <video
               height="175"
-              src="img/aviator.jpg"
+              loop={true}
+              muted={true}
+              poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/revenant.jpg"
+              preload="metadata"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
               width="280"
             />
           </div>
@@ -347,9 +384,40 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/films/4"
+              onClick={[Function]}
             >
-              Aviator
+              The Revenant
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <video
+              height="175"
+              loop={true}
+              muted={true}
+              poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/johnny-english.jpg"
+              preload="metadata"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/5"
+              onClick={[Function]}
+            >
+              Johnny English
             </a>
           </h3>
         </article>
@@ -363,7 +431,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
-          href="main.html"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

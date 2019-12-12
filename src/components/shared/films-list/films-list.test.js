@@ -4,6 +4,7 @@ import renderer from 'react-test-renderer';
 import {films} from '../../../mocks/films';
 
 import {FilmsList} from './films-list';
+import {StaticRouter} from 'react-router-dom';
 
 
 const mock = {
@@ -16,13 +17,16 @@ const mock = {
 
 it(`FilmList correctly renders after relaunch`, () => {
   const tree = renderer
-    .create(<FilmsList
-      activeGenre={mock.activeGenre}
-      films={mock.films}
-      activeCard={mock.activeCard}
-      setActiveCard={mock.setActiveCard}
-      resetActiveCard={mock.resetActiveCard}
-    />)
+    .create(
+        <StaticRouter>
+          <FilmsList
+            films={mock.films}
+            activeItem={mock.activeCard}
+            setActiveItem={mock.setActiveCard}
+            resetActiveItem={mock.resetActiveCard}
+          />
+        </StaticRouter>
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();

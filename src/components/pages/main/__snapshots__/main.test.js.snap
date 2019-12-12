@@ -83,7 +83,8 @@ exports[`MainPage correctly renders after relaunch 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="/films"
+          href="/films/1"
+          onClick={[Function]}
         >
           Gangs of new york
         </a>
@@ -112,7 +113,8 @@ exports[`MainPage correctly renders after relaunch 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="/films"
+          href="/films/2"
+          onClick={[Function]}
         >
           War of the Worlds
         </a>
@@ -141,7 +143,8 @@ exports[`MainPage correctly renders after relaunch 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="/films"
+          href="/films/3"
+          onClick={[Function]}
         >
           Macbeth
         </a>
@@ -170,7 +173,8 @@ exports[`MainPage correctly renders after relaunch 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="/films"
+          href="/films/4"
+          onClick={[Function]}
         >
           The Revenant
         </a>
@@ -199,7 +203,8 @@ exports[`MainPage correctly renders after relaunch 1`] = `
       >
         <a
           className="small-movie-card__link"
-          href="/films"
+          href="/films/5"
+          onClick={[Function]}
         >
           Johnny English
         </a>
