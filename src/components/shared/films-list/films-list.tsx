@@ -6,6 +6,7 @@ import {FilmCard} from '../film-card/film-card';
 
 interface Props {
   films: Film[];
+
   activeItem?: number;
   setActiveItem: (ind: number) => void;
   resetActiveItem: () => void;
@@ -60,8 +61,7 @@ export class FilmsList extends React.PureComponent<Props, null> {
           index={i}
           onCardMouseEnter={this.onCardMouseEnter}
           onCardMouseLeave={this.onCardMouseLeaver}
-        />)
-        }
+        />)}
       </div>
     );
   }

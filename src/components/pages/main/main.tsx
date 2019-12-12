@@ -2,20 +2,16 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 
 import {Film} from "../../../models/Film";
-import {ActionCreator} from '../../../reducer/data/data';
-import {getActiveGenre, getFilteredFilms, getGenres} from '../../../reducer/data/selectors';
-import {withActiveItem} from '../../../hocs/with-active-item/with-active-item';
-import {FilmsList} from '../../shared/films-list/films-list';
-import {GenreList} from '../../shared/genre-list/genre-list';
+import {getFilms, getGenres} from '../../../reducer/data/selectors';
+import Catalog from "../../shared/catalog/catalog";
+import {withFilters} from "../../../hocs/with-filters/with-filters";
 
 
-const FilmsListWrapped = withActiveItem(FilmsList);
+const CatalogWrapped = withFilters(Catalog);
 
 interface Props {
-  activeGenre: string;
   films: Film[];
   genres: string[];
-  onGenreLinkClick: () => void;
 }
 
 export class MainPage extends React.PureComponent<Props> {
@@ -27,29 +23,21 @@ export class MainPage extends React.PureComponent<Props> {
 
   constructor(props: Props) {
     super(props);
+
+
   }
 
   render() {
-    const {activeGenre, films, genres, onGenreLinkClick} = this.props;
+    const {films, genres} = this.props;
 
     return (
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <GenreList
-          activeGenre={activeGenre}
-          genres={genres}
-          onLinkClick={onGenreLinkClick}
-        />
-
-        <FilmsListWrapped
-          activeGenre={activeGenre}
+        <CatalogWrapped
           films={films}
+          genres={genres}
         />
-
-        <div className="catalog__more">
-          <button className="catalog__button" type="button">Show more</button>
-        </div>
       </section>
     );
   }
@@ -57,14 +45,9 @@ export class MainPage extends React.PureComponent<Props> {
 
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  activeGenre: getActiveGenre(state),
-  films: getFilteredFilms(state),
+  films: getFilms(state),
   genres: getGenres(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onGenreLinkClick: (genre) => dispatch(ActionCreator.changeGenre(genre)),
-});
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps)(MainPage);
