@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {connect} from "react-redux";
+import {RouteComponentProps} from 'react-router-dom';
 
 import {Film} from "../../../models/Film";
 import {User} from "../../../models/User";
@@ -15,7 +16,7 @@ import {FilmsList} from "../../shared/films-list/films-list";
 const FilmsListWrapped = withActiveItem(FilmsList);
 const TabsWrapped = withActiveItem(Tabs);
 
-interface Props {
+interface Props extends RouteComponentProps {
   film: Film;
   films: Film[];
   user: User;
@@ -48,6 +49,17 @@ export class FilmPage extends React.PureComponent<Props> {
     films: [],
   };
 
+  constructor(props: Props) {
+    super(props);
+
+    this.clickPlayBtnHandler = this.clickPlayBtnHandler.bind(this);
+  }
+
+  clickPlayBtnHandler() {
+    const {film, history} = this.props;
+    history.push(`/films/${film.id}/player`);
+  }
+
   render() {
     const {film, films, user} = this.props;
 
@@ -73,7 +85,7 @@ export class FilmPage extends React.PureComponent<Props> {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button className="btn btn--play movie-card__button" type="button" onClick={this.clickPlayBtnHandler}>
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"/>
                     </svg>

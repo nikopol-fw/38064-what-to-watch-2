@@ -9,6 +9,7 @@ import {Operation} from "../../../reducer/data/data";
 import {User} from "../../../models/User";
 import {Header} from "../../shared/header/header";
 import {Footer} from "../../shared/footer/footer";
+import history from "../../../history";
 
 
 const CatalogWrapped = withFilters(Catalog);
@@ -34,6 +35,7 @@ export class MainPage extends React.PureComponent<Props> {
     super(props);
 
     this.clickFavoriteHandler = this.clickFavoriteHandler.bind(this);
+    this.clickPlayHandler = this.clickPlayHandler.bind(this);
 
     props.loadPromo();
   }
@@ -43,6 +45,11 @@ export class MainPage extends React.PureComponent<Props> {
         this.props.promo.id,
         this.props.promo.isFavorite ? 0 : 1
     );
+  }
+
+  clickPlayHandler() {
+    const {promo} = this.props;
+    history.push(`/films/${promo.id}/player`);
   }
 
   render() {
@@ -75,7 +82,8 @@ export class MainPage extends React.PureComponent<Props> {
                 <div className="movie-card__buttons">
                   {promo && (
                     <>
-                      <button className="btn btn--play movie-card__button" type="button">
+                      <button className="btn btn--play movie-card__button" type="button"
+                        onClick={this.clickPlayHandler}>
                         <svg viewBox="0 0 19 19" width="19" height="19">
                           <use xlinkHref="#play-s"/>
                         </svg>

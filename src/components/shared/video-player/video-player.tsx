@@ -7,7 +7,7 @@ interface Props {
   isPlaying: boolean;
 }
 
-export class VideoPlayer extends React.PureComponent<Props, null> {
+export class VideoPlayer extends React.PureComponent<Props> {
 
   private readonly videoRef = React.createRef<HTMLVideoElement>();
 
@@ -23,7 +23,7 @@ export class VideoPlayer extends React.PureComponent<Props, null> {
   render() {
     const {preview, poster} = this.props;
 
-    return <video width="280" height="175" preload="metadata" muted loop
+    return <video className="player__video" preload="metadata" muted loop
       src={preview}
       poster={poster}
       ref={this.videoRef}

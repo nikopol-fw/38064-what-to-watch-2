@@ -9,6 +9,7 @@ import MainPage from '../pages/main/main';
 import FilmPage from '../pages/film/film';
 import {Login} from '../pages/login/login';
 import MyList from "../pages/my-list/my-list";
+import Player from "../pages/player/player";
 
 
 interface PrivateRouteProps {
@@ -47,6 +48,7 @@ export const App: React.FC<Props> = (props) => {
           render={(mainPageProps): React.ReactNode => <MainPage {...mainPageProps} user={{user}}/>}
         />
         <Route path="/films/:id" exact component={FilmPage}/>
+        <Route path="/films/:id/player" exact component={Player}/>
         <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
         <PrivateRoute path="/login" component={Login} is={!isLogin} redirectTo={`/`}/>
       </Switch>
