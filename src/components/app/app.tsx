@@ -5,15 +5,12 @@ import {Redirect, Route, Router, Switch} from 'react-router-dom';
 import {User} from "../../models/User";
 import history from "../../history";
 import {getUserInfo} from "../../reducer/user/selectors";
-import {withLayout} from '../../hocs/with-layout/with-layout';
 import MainPage from '../pages/main/main';
 import FilmPage from '../pages/film/film';
 import {Login} from '../pages/login/login';
 import MyList from "../pages/my-list/my-list";
-import LayoutMainPage from "../shared/layout-main-page/layout-main-page";
+import Player from "../pages/player/player";
 
-
-const MainPageWrapped = withLayout(MainPage, LayoutMainPage);
 
 interface PrivateRouteProps {
   component: React.ComponentType;
@@ -48,9 +45,10 @@ export const App: React.FC<Props> = (props) => {
     <Router history={history}>
       <Switch>
         <Route path="/" exact
-          render={(mainPageProps): React.ReactNode => <MainPageWrapped {...mainPageProps} layoutProps={{user}}/>}
+          render={(mainPageProps): React.ReactNode => <MainPage {...mainPageProps} user={{user}}/>}
         />
         <Route path="/films/:id" exact component={FilmPage}/>
+        <Route path="/films/:id/player" exact component={Player}/>
         <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
         <PrivateRoute path="/login" component={Login} is={!isLogin} redirectTo={`/`}/>
       </Switch>

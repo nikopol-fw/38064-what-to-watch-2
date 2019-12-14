@@ -1,8 +1,11 @@
 import * as React from 'react';
 
-import {Film} from "../../../models/Film";
+import {Film} from '../../../models/Film';
+import {withPlayOnHover} from '../../../hocs/with-play-on-hover/with-play-on-hover';
 import {FilmCard} from '../film-card/film-card';
 
+
+const FilmCardWrapped = withPlayOnHover(FilmCard);
 
 interface Props {
   films: Film[];
@@ -52,7 +55,7 @@ export class FilmsList extends React.PureComponent<Props, null> {
 
     return (
       <div className="catalog__movies-list">
-        {films.map((film, i) => <FilmCard key={`film-card-${i}`}
+        {films.map((film, i) => <FilmCardWrapped key={`film-card-${i}`}
           id={film.id}
           title={film.name}
           previewImage={film.previewImage}

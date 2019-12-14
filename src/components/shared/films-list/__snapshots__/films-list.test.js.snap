@@ -13,13 +13,11 @@ exports[`FilmList correctly renders after relaunch 1`] = `
       className="small-movie-card__image"
     >
       <video
-        height="175"
-        loop={true}
+        className="player__video"
         muted={true}
         poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
         preload="metadata"
         src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-        width="280"
       />
     </div>
     <h3
@@ -43,13 +41,11 @@ exports[`FilmList correctly renders after relaunch 1`] = `
       className="small-movie-card__image"
     >
       <video
-        height="175"
-        loop={true}
+        className="player__video"
         muted={true}
         poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/war-of-the-worlds.jpg"
         preload="metadata"
         src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-        width="280"
       />
     </div>
     <h3
@@ -73,13 +69,11 @@ exports[`FilmList correctly renders after relaunch 1`] = `
       className="small-movie-card__image"
     >
       <video
-        height="175"
-        loop={true}
+        className="player__video"
         muted={true}
         poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/macbeth.jpg"
         preload="metadata"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-        width="280"
       />
     </div>
     <h3
@@ -103,13 +97,11 @@ exports[`FilmList correctly renders after relaunch 1`] = `
       className="small-movie-card__image"
     >
       <video
-        height="175"
-        loop={true}
+        className="player__video"
         muted={true}
         poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/revenant.jpg"
         preload="metadata"
         src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-        width="280"
       />
     </div>
     <h3
@@ -133,13 +125,11 @@ exports[`FilmList correctly renders after relaunch 1`] = `
       className="small-movie-card__image"
     >
       <video
-        height="175"
-        loop={true}
+        className="player__video"
         muted={true}
         poster="https://htmlacademy-react-2.appspot.com/wtw/static/film/preview/johnny-english.jpg"
         preload="metadata"
         src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-        width="280"
       />
     </div>
     <h3

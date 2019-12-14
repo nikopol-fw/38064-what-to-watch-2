@@ -1,32 +1,40 @@
 import * as React from 'react';
+import {RefObject} from "react";
 
 
 interface Props {
+  muted: boolean;
   poster: string;
-  preview: string;
-  isPlaying: boolean;
+  video: string;
+
+  videoRef?: RefObject<HTMLVideoElement>;
+
+  onMetadataLoaded?: () => void;
+  onTimeUpdate?: () => void;
 }
 
-export class VideoPlayer extends React.PureComponent<Props, null> {
-
-  private readonly videoRef = React.createRef<HTMLVideoElement>();
-
-  componentDidUpdate() {
-    const videoElement = this.videoRef.current;
-    if (this.props.isPlaying) {
-      videoElement.play();
-    } else {
-      videoElement.load();
-    }
-  }
+export class VideoPlayer extends React.PureComponent<Props> {
 
   render() {
-    const {preview, poster} = this.props;
+    const {muted, poster, video, videoRef, onMetadataLoaded, onTimeUpdate} = this.props;
 
-    return <video width="280" height="175" preload="metadata" muted loop
-      src={preview}
-      poster={poster}
-      ref={this.videoRef}
-    />;
+    return onMetadataLoaded && onTimeUpdate
+      ? (
+        <video className="player__video" preload="metadata"
+          src={video}
+          poster={poster}
+          muted={muted}
+          ref={videoRef}
+          onLoadedMetadata={onMetadataLoaded}
+          onTimeUpdate={onTimeUpdate}
+        />
+      ) : (
+        <video className="player__video" preload="metadata"
+          src={video}
+          poster={poster}
+          muted={muted}
+          ref={videoRef}
+        />
+      );
   }
 }
