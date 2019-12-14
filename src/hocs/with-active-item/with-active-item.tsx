@@ -9,9 +9,12 @@ export const withActiveItem = (Component) => {
   type T = React.ComponentProps<typeof Component>;
 
   class WithActiveItem extends React.PureComponent<T, State> {
+
     state = {
       activeItem: -1,
     };
+
+    static readonly displayName = `WithActiveItem(${Component.displayName || Component.name})`;
 
     constructor(props) {
       super(props);

@@ -1,7 +1,8 @@
 import * as React from 'react';
+import {RefObject} from 'react';
+import {Link} from 'react-router-dom';
 
 import {VideoPlayer} from '../video-player/video-player';
-import {Link} from "react-router-dom";
 
 
 interface Props {
@@ -9,7 +10,9 @@ interface Props {
   title: string;
   previewImage: string;
   previewVideoLink: string;
-  isPlaying: boolean;
+
+  videoRef: RefObject<HTMLVideoElement>;
+
   index: number;
   onCardMouseEnter: (ind: number) => void;
   onCardMouseLeave: () => void;
@@ -26,16 +29,17 @@ export class FilmCard extends React.PureComponent<Props, null> {
   }
 
   render() {
-    const {id, title, previewImage, previewVideoLink, isPlaying, onCardMouseLeave} = this.props;
+    const {id, title, previewImage, previewVideoLink, videoRef, onCardMouseLeave} = this.props;
 
     return <article className="small-movie-card catalog__movies-card"
       onMouseEnter={this.onCardMouserEnter}
       onMouseLeave={onCardMouseLeave}>
       <div className="small-movie-card__image">
         <VideoPlayer
+          muted={true}
           poster={previewImage}
-          preview={previewVideoLink}
-          isPlaying={isPlaying}
+          video={previewVideoLink}
+          videoRef={videoRef}
         />
       </div>
       <h3 className="small-movie-card__title">

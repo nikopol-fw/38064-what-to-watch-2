@@ -15,7 +15,7 @@ it(`VideoPlayer correctly renders after relaunch`, () => {
   const tree = renderer
     .create(<VideoPlayer
       poster={mock.poster}
-      preview={mock.preview}
+      video={mock.preview}
       isPlaying={mock.isPlaying}
     />)
     .toJSON();
