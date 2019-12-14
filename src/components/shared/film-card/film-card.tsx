@@ -11,7 +11,7 @@ interface Props {
   previewImage: string;
   previewVideoLink: string;
 
-  videoRef: RefObject<HTMLVideoElement>;
+  videoRef?: RefObject<HTMLVideoElement>;
 
   index: number;
   onCardMouseEnter: (ind: number) => void;
@@ -36,7 +36,7 @@ export class FilmCard extends React.PureComponent<Props, null> {
       onMouseLeave={onCardMouseLeave}>
       <div className="small-movie-card__image">
         <VideoPlayer
-          muted={true}
+          isMuted={true}
           poster={previewImage}
           video={previewVideoLink}
           videoRef={videoRef}

@@ -84,7 +84,7 @@ export class Player extends React.PureComponent<Props> {
     return (
       <div className="player">
         <VideoPlayer
-          muted={false}
+          isMuted={false}
           poster={film.previewImage}
           video={film.videoLink}
           videoRef={videoRef}
