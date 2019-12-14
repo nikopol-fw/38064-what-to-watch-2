@@ -10,6 +10,7 @@ import {Header} from "../../shared/header/header";
 import {ReviewForm} from "../../shared/review-form/review-form";
 import {Operation} from "../../../reducer/data/data";
 import {FormReview} from "../../../models/FormReview";
+import {Link} from "react-router-dom";
 
 
 const ReviewFormWrapped = withValidation(ReviewForm);
@@ -57,7 +58,18 @@ export class AddReview extends React.PureComponent<Props> {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <Header avatar={user.avatar} isAuth={!!(user.id)} name={user.name} />
+          <Header avatar={user.avatar} isAuth={!!(user.id)} name={user.name}>
+            <nav className="breadcrumbs">
+              <ul className="breadcrumbs__list">
+                <li className="breadcrumbs__item">
+                  <Link to={`/films/${film.id}`} className="breadcrumbs__link">{film.name}</Link>
+                </li>
+                <li className="breadcrumbs__item">
+                  <a className="breadcrumbs__link">Add review</a>
+                </li>
+              </ul>
+            </nav>
+          </Header>
 
           <div className="movie-card__poster movie-card__poster--small">
             <img src={film.posterImage} alt={film.name} width="218" height="327"/>

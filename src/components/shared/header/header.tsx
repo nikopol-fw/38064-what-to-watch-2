@@ -21,6 +21,8 @@ export const Header: React.FC<Props> = (props) => {
         </Link>
       </div>
 
+      {props.children}
+
       <div className="user-block">
         {isAuth ? (
           <div className="user-block__avatar">

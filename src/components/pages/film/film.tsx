@@ -97,7 +97,7 @@ export class FilmPage extends React.PureComponent<Props> {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <Link to={`/films/${film.id}/review`} className="btn movie-card__button">Add review</Link>
+                  {(user && user.id) && <Link to={`/films/${film.id}/review`} className="btn movie-card__button">Add review</Link>}
                 </div>
               </div>
             </div>
