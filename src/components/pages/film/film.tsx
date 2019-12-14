@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from "react-redux";
-import {RouteComponentProps} from 'react-router-dom';
+import {Link, RouteComponentProps} from 'react-router-dom';
 
 import {Film} from "../../../models/Film";
 import {User} from "../../../models/User";
@@ -97,7 +97,7 @@ export class FilmPage extends React.PureComponent<Props> {
                     </svg>
                     <span>My list</span>
                   </button>
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                  {(user && user.id) && <Link to={`/films/${film.id}/review`} className="btn movie-card__button">Add review</Link>}
                 </div>
               </div>
             </div>
