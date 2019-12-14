@@ -5,9 +5,10 @@ import {Redirect, Route, Router, Switch} from 'react-router-dom';
 import {User} from "../../models/User";
 import history from "../../history";
 import {getUserInfo} from "../../reducer/user/selectors";
-import MainPage from '../pages/main/main';
+import AddReview from "../pages/add-review/add-review";
 import FilmPage from '../pages/film/film';
 import LoginPage from '../pages/login/login';
+import MainPage from '../pages/main/main';
 import MyList from "../pages/my-list/my-list";
 import Player from "../pages/player/player";
 
@@ -49,6 +50,7 @@ export const App: React.FC<Props> = (props) => {
         />
         <Route path="/films/:id" exact component={FilmPage}/>
         <Route path="/films/:id/player" exact component={Player}/>
+        <Route path="/films/:id/review" exact component={AddReview}/>
         <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
         <PrivateRoute path="/login" component={LoginPage} is={!isLogin} redirectTo={`/`}/>
       </Switch>
