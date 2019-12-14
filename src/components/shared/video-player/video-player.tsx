@@ -3,7 +3,7 @@ import {RefObject} from "react";
 
 
 interface Props {
-  muted: boolean;
+  isMuted: boolean;
   poster: string;
   video: string;
 
@@ -16,14 +16,14 @@ interface Props {
 export class VideoPlayer extends React.PureComponent<Props> {
 
   render() {
-    const {muted, poster, video, videoRef, onMetadataLoaded, onTimeUpdate} = this.props;
+    const {isMuted, poster, video, videoRef, onMetadataLoaded, onTimeUpdate} = this.props;
 
     return onMetadataLoaded && onTimeUpdate
       ? (
         <video className="player__video" preload="metadata"
           src={video}
           poster={poster}
-          muted={muted}
+          muted={isMuted}
           ref={videoRef}
           onLoadedMetadata={onMetadataLoaded}
           onTimeUpdate={onTimeUpdate}
@@ -32,7 +32,7 @@ export class VideoPlayer extends React.PureComponent<Props> {
         <video className="player__video" preload="metadata"
           src={video}
           poster={poster}
-          muted={muted}
+          muted={isMuted}
           ref={videoRef}
         />
       );
