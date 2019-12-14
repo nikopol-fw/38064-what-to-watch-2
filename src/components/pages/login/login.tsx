@@ -1,12 +1,21 @@
 import * as React from 'react';
+import {connect} from "react-redux";
 import {Link} from 'react-router-dom';
 
-import LoginForm from "../../shared/login-form/login-form";
+import {FormLogin} from "../../../models/FormLogin";
+import {Operation} from "../../../reducer/user/user";
+import {LoginForm} from "../../shared/login-form/login-form";
 
 
-export class Login extends React.PureComponent {
+interface Props {
+  onAuthorize: (formData: FormLogin) => Promise<any>;
+}
+
+export class LoginPage extends React.PureComponent<Props> {
 
   render() {
+    const {onAuthorize} = this.props;
+
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -22,16 +31,16 @@ export class Login extends React.PureComponent {
         </header>
 
         <div className="sign-in user-page__content">
-          <LoginForm/>
+          <LoginForm onAuthorize={onAuthorize}/>
         </div>
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
+            <Link to="/" className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -42,3 +51,11 @@ export class Login extends React.PureComponent {
     );
   }
 }
+
+
+const mapDispatchToProps = (dispatch) => ({
+  onAuthorize: (formData: FormLogin) => dispatch(Operation.authorize(formData)),
+});
+
+
+export default connect(null, mapDispatchToProps)(LoginPage);

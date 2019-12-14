@@ -1,13 +1,10 @@
 import * as React from 'react';
 import {FormEvent} from "react";
-import {connect} from 'react-redux';
-import {withRouter, RouteComponentProps} from 'react-router-dom';
 
 import {FormLogin} from '../../../models/FormLogin';
-import {Operation} from '../../../reducer/user/user';
 
 
-interface Props extends RouteComponentProps<any> {
+interface Props {
   onAuthorize: (formData: FormLogin) => Promise<any>;
 }
 
@@ -56,11 +53,3 @@ export class LoginForm extends React.PureComponent<Props, null> {
     );
   }
 }
-
-
-const mapDispatchToProps = (dispatch) => ({
-  onAuthorize: (formData: FormLogin) => dispatch(Operation.authorize(formData)),
-});
-
-
-export default connect(null, mapDispatchToProps)(withRouter(LoginForm));

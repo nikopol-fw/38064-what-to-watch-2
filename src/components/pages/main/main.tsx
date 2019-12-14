@@ -10,6 +10,7 @@ import {User} from "../../../models/User";
 import {Header} from "../../shared/header/header";
 import {Footer} from "../../shared/footer/footer";
 import history from "../../../history";
+import {getUserInfo} from "../../../reducer/user/selectors";
 
 
 const CatalogWrapped = withFilters(Catalog);
@@ -128,6 +129,7 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   films: getFilms(state),
   genres: getGenres(state),
   promo: getPromo(state),
+  user: getUserInfo(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
