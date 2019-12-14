@@ -20,7 +20,6 @@ export class LoginForm extends React.PureComponent<Props, null> {
     evt.preventDefault();
 
     const form = evt.target;
-
     const formData: FormLogin = {
       email: form[`email`].value,
       password: form[`password`].value,
