@@ -1,6 +1,7 @@
 import axios, {AxiosInstance} from 'axios';
-
 import history from "./history";
+
+import {ActionCreator} from "./reducer/user/user";
 
 
 export const createAPI = (dispatch): AxiosInstance => {
@@ -14,8 +15,10 @@ export const createAPI = (dispatch): AxiosInstance => {
 
   const onError = (error) => {
     if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+      dispatch(ActionCreator.resetUserInfo());
       history.push(`/login`);
     }
+    return error;
   };
 
   api.interceptors.response.use(onSuccess, onError);

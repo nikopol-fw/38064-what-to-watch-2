@@ -50,7 +50,7 @@ export const App: React.FC<Props> = (props) => {
         />
         <Route path="/films/:id" exact component={FilmPage}/>
         <Route path="/films/:id/player" exact component={Player}/>
-        <Route path="/films/:id/review" exact component={AddReview}/>
+        <PrivateRoute path="/films/:id/review" component={AddReview} is={isLogin} redirectTo={`/login`}/>
         <PrivateRoute path="/mylist" component={MyList} is={isLogin} redirectTo={`/login`} data={{user}}/>
         <PrivateRoute path="/login" component={LoginPage} is={!isLogin} redirectTo={`/`}/>
       </Switch>

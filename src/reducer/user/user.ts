@@ -10,11 +10,15 @@ const initialState = {
 
 
 const ActionType = {
+  RESET_USER: `RESET_USER`,
   UPDATE_USER_INFO: `UPDATE_USER_INFO`,
 };
 
 
 const ActionCreator = {
+  resetUserInfo: () => ({
+    type: ActionType.RESET_USER,
+  }),
   updateUserInfo: (userData: User) => ({
     type: ActionType.UPDATE_USER_INFO,
     payload: userData,
@@ -59,6 +63,11 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.RESET_USER:
+      return Object.assign({}, state, {
+        info: initialState.info,
+      });
+
     case ActionType.UPDATE_USER_INFO:
       return Object.assign({}, state, {
         info: action.payload,
