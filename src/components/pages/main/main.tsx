@@ -44,7 +44,7 @@ export class MainPage extends React.PureComponent<Props> {
   clickFavoriteHandler() {
     this.props.setFavorite(
         this.props.promo.id,
-        this.props.promo.isFavorite ? 0 : 1
+        this.props.promo.isFavorite ? 0 : 1,
     );
   }
 
