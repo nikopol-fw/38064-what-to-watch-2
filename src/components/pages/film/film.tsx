@@ -4,6 +4,7 @@ import {Link, RouteComponentProps} from 'react-router-dom';
 
 import {Film} from "../../../models/Film";
 import {User} from "../../../models/User";
+import {Operation} from "../../../reducer/data/data";
 import {getFilmById, getRelatedFilms} from "../../../reducer/data/selectors";
 import {getUserInfo} from "../../../reducer/user/selectors";
 import {withActiveItem} from "../../../hocs/with-active-item/with-active-item";
@@ -20,6 +21,8 @@ interface Props extends RouteComponentProps {
   film: Film;
   films: Film[];
   user: User;
+
+  setFavorite: (filmId: number, status: (0 | 1)) => Promise<any>;
 }
 
 export class FilmPage extends React.PureComponent<Props> {
@@ -53,11 +56,19 @@ export class FilmPage extends React.PureComponent<Props> {
     super(props);
 
     this.clickPlayBtnHandler = this.clickPlayBtnHandler.bind(this);
+    this.clickFavoriteHandler = this.clickFavoriteHandler.bind(this);
   }
 
   clickPlayBtnHandler() {
     const {film, history} = this.props;
     history.push(`/films/${film.id}/player`);
+  }
+
+  clickFavoriteHandler() {
+    this.props.setFavorite(
+        this.props.film.id,
+        this.props.film.isFavorite ? 0 : 1,
+    );
   }
 
   render() {
@@ -91,9 +102,9 @@ export class FilmPage extends React.PureComponent<Props> {
                     </svg>
                     <span>Play</span>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button">
+                  <button className="btn btn--list movie-card__button" type="button" onClick={this.clickFavoriteHandler}>
                     <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"/>
+                      <use xlinkHref={film.isFavorite ? `#in-list` : `#add`}/>
                     </svg>
                     <span>My list</span>
                   </button>
@@ -139,5 +150,9 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  setFavorite: (filmId: number, status: (0 | 1)) => dispatch(Operation.setFavoriteStatus(filmId, status)),
+});
 
-export default connect(mapStateToProps)(FilmPage);
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilmPage);
