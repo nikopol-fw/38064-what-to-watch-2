@@ -6,13 +6,13 @@ import {LoginPage} from './login';
 
 
 const mock = {
-  onAuthorize: () => void (0),
+  authorize: () => void (0),
 };
 
 it(`LoginPage correctly renders after relaunch`, () => {
   const tree = renderer.create(
       <StaticRouter>
-        <LoginPage onAuthorize={mock.onAuthorize}/>
+        <LoginPage authorize={mock.authorize}/>
       </StaticRouter>
   ).toJSON();
 

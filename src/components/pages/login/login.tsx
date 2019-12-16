@@ -4,17 +4,17 @@ import {Link} from 'react-router-dom';
 
 import {FormLogin} from "../../../models/FormLogin";
 import {Operation} from "../../../reducer/user/user";
-import {LoginForm} from "../../shared/login-form/login-form";
+import LoginForm from "../../shared/login-form/login-form";
 
 
 interface Props {
-  onAuthorize: (formData: FormLogin) => Promise<any>;
+  authorize: (formData: FormLogin) => Promise<any>;
 }
 
 export class LoginPage extends React.PureComponent<Props> {
 
   render() {
-    const {onAuthorize} = this.props;
+    const {authorize} = this.props;
 
     return (
       <div className="user-page">
@@ -31,7 +31,7 @@ export class LoginPage extends React.PureComponent<Props> {
         </header>
 
         <div className="sign-in user-page__content">
-          <LoginForm onAuthorize={onAuthorize}/>
+          <LoginForm authorize={authorize}/>
         </div>
 
         <footer className="page-footer">
@@ -54,7 +54,7 @@ export class LoginPage extends React.PureComponent<Props> {
 
 
 const mapDispatchToProps = (dispatch) => ({
-  onAuthorize: (formData: FormLogin) => dispatch(Operation.authorize(formData)),
+  authorize: (formData: FormLogin) => dispatch(Operation.authorize(formData)),
 });
 
 

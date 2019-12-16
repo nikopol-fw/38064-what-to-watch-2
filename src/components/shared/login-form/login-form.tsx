@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {FormEvent} from "react";
+import {withRouter, RouteComponentProps} from 'react-router-dom';
 
 import {FormLogin} from '../../../models/FormLogin';
 
 
-interface Props {
-  onAuthorize: (formData: FormLogin) => Promise<any>;
+interface Props extends RouteComponentProps {
+  authorize: (formData: FormLogin) => Promise<any>;
 }
 
 export class LoginForm extends React.PureComponent<Props, null> {
@@ -25,7 +26,15 @@ export class LoginForm extends React.PureComponent<Props, null> {
       password: form[`password`].value,
     };
 
-    this.props.onAuthorize(formData);
+    this.props.authorize(formData)
+      .then(() => {
+        const {history, location} = this.props;
+        if (location.key) {
+          history.goBack();
+        } else {
+          history.push(`/`);
+        }
+      });
   }
 
   render() {
@@ -52,3 +61,6 @@ export class LoginForm extends React.PureComponent<Props, null> {
     );
   }
 }
+
+
+export default withRouter(LoginForm);
