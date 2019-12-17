@@ -3,12 +3,13 @@ import {AxiosInstance} from "axios";
 import {Film} from "../../models/Film";
 import {Review} from "../../models/Review";
 import {keysToCamel} from '../../lib/keys-to-camel/keys-to-camel';
+import {updateFilm} from "../../lib/update-film/update-film";
 
 
 const initialState = {
   favorites: [],
   films: [],
-  promo: null,
+  promoId: null,
   reviews: [],
 };
 
@@ -32,9 +33,9 @@ const ActionCreator = {
     type: ActionType.LOAD_FILMS,
     payload: films,
   }),
-  loadPromo: (promo: Film) => ({
+  loadPromo: (promoId: number) => ({
     type: ActionType.LOAD_PROMO,
-    payload: promo,
+    payload: promoId,
   }),
   loadReviews: (reviews: Review[]) => ({
     type: ActionType.LOAD_REVIEWS,
@@ -44,9 +45,9 @@ const ActionCreator = {
     type: ActionType.SEND_REVIEW,
     payload: review,
   }),
-  setFavoriteStatus: (isFavorite: boolean) => ({
+  setFavoriteStatus: (updatedFilm: Film) => ({
     type: ActionType.SET_FAVORITE_STATUS,
-    payload: isFavorite,
+    payload: updatedFilm,
   }),
 };
 
@@ -76,8 +77,7 @@ const Operation = {
     return api.get(`/films/promo`)
       .then((response) => {
         if (response && response.status === 200) {
-          response.data = keysToCamel(response.data);
-          dispatch(ActionCreator.loadPromo(response.data));
+          dispatch(ActionCreator.loadPromo(response.data.id));
         }
       });
   },
@@ -111,7 +111,8 @@ const Operation = {
     return api.post(`/favorite/${filmId}/${status}`)
       .then((response) => {
         if (response && response.status === 200) {
-          dispatch(ActionCreator.setFavoriteStatus(response.data[`is_favorite`]));
+          response.data = keysToCamel(response.data);
+          dispatch(ActionCreator.setFavoriteStatus(response.data));
         }
       });
   },
@@ -132,7 +133,7 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.LOAD_PROMO:
       return Object.assign({}, state, {
-        promo: action.payload,
+        promoId: action.payload,
       });
 
     case ActionType.LOAD_REVIEWS:
@@ -140,12 +141,9 @@ const reducer = (state = initialState, action) => {
         reviews: action.payload,
       });
 
-
     case ActionType.SET_FAVORITE_STATUS:
       return Object.assign({}, state, {
-        promo: Object.assign({}, state.promo, {
-          isFavorite: action.payload,
-        })
+        films: updateFilm(state.films, action.payload),
       });
   }
 

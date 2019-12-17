@@ -19,7 +19,7 @@ const getFilmsByGenre = (state, genre: string): Film[] => genre === `All genres`
   ? state[NAME_SPACE].films
   : state[NAME_SPACE].films.filter((film: Film) => film.genre === genre);
 
-const getPromo = (state) => state[NAME_SPACE].promo;
+const getPromoId = (state) => state[NAME_SPACE].promoId;
 
 const getRelatedFilms = (state, currentFilm: Film, count: number) => state[NAME_SPACE].films
   .filter((film: Film) => film.id !== currentFilm.id && film.genre === currentFilm.genre)
@@ -51,6 +51,11 @@ const getFilteredFilms = createSelector(
         ? films
         : films.filter((film) => film.genre === genre);
     }
+);
+
+const getPromo = createSelector(
+    [getFilms, getPromoId],
+    (films: Film[], promoId: number) => films.find((film) => film.id === promoId)
 );
 
 
