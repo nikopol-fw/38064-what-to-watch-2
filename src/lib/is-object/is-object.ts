@@ -4,5 +4,5 @@
  * @return {boolean}
  */
 export const isObject = (value) => {
-  return value && typeof value === `object` && value.constructor === Object;
+  return (value !== null) && typeof value === `object` && value.constructor === Object;
 };

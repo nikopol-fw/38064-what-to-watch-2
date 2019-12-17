@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Redirect, Route, Router, Switch} from 'react-router-dom';
 
-import {User} from "../../models/User";
+import {User} from "../../models/user";
 import history from "../../history";
 import {getUserInfo} from "../../reducer/user/selectors";
 import AddReview from "../pages/add-review/add-review";

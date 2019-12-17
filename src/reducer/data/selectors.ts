@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 
 import NameSpace from '../name-spaces';
-import {Film} from "../../models/Film";
+import {Film} from "../../models/film";
 
 
 const NAME_SPACE = NameSpace.DATA;

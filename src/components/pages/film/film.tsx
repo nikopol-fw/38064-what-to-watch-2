@@ -2,8 +2,8 @@ import * as React from 'react';
 import {connect} from "react-redux";
 import {Link, RouteComponentProps} from 'react-router-dom';
 
-import {Film} from "../../../models/Film";
-import {User} from "../../../models/User";
+import {Film} from "../../../models/film";
+import {User} from "../../../models/user";
 import {Operation} from "../../../reducer/data/data";
 import {getFilmById, getRelatedFilms} from "../../../reducer/data/selectors";
 import {getUserInfo} from "../../../reducer/user/selectors";

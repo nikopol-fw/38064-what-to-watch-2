@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import {Film} from "../../../models/Film";
+import {Film} from "../../../models/film";
 
 import {TabOverview} from "../tab-overview/tab-overview";
 import {TabDetails} from "../tab-details/tab-details";

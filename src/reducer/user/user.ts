@@ -1,7 +1,7 @@
-import {User} from "../../models/User";
+import {User} from "../../models/user";
 import {AxiosInstance, AxiosResponse} from "axios";
-import {FormLogin} from "../../models/FormLogin";
-import {LoginApiData} from "../../models/ApiLoginData";
+import {FormLogin} from "../../models/form-login";
+import {LoginApiData} from "../../models/api-login-data";
 
 
 const initialState = {

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 
-import {Review} from "../../../models/Review";
+import {Review} from "../../../models/review";
 import {formatDate} from "../../../lib/format-date/format-date";
 import {formatRating} from "../../../lib/format-rating/format-rating";
 import {Operation} from "../../../reducer/data/data";

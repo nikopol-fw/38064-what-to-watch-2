@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {Film} from "../../../models/Film";
+import {Film} from "../../../models/film";
 import {getFilms, getGenres, getPromo} from '../../../reducer/data/selectors';
 import Catalog from "../../shared/catalog/catalog";
 import {withFilters} from "../../../hocs/with-filters/with-filters";
 import {Operation} from "../../../reducer/data/data";
-import {User} from "../../../models/User";
+import {User} from "../../../models/user";
 import {Header} from "../../shared/header/header";
 import {Footer} from "../../shared/footer/footer";
 import history from "../../../history";

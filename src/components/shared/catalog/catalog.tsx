@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from "react-redux";
 
-import {Film} from "../../../models/Film";
+import {Film} from "../../../models/film";
 import {getFilmsByGenre} from "../../../reducer/data/selectors";
 import {withActiveItem} from "../../../hocs/with-active-item/with-active-item";
 import {GenreList} from "../genre-list/genre-list";

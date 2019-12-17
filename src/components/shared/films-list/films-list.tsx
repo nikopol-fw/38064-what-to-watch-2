@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {Film} from '../../../models/Film';
+import {Film} from '../../../models/film';
 import {withPlayOnHover} from '../../../hocs/with-play-on-hover/with-play-on-hover';
 import {FilmCard} from '../film-card/film-card';
 

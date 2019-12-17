@@ -1,7 +1,7 @@
 import {AxiosInstance} from "axios";
 
-import {Film} from "../../models/Film";
-import {Review} from "../../models/Review";
+import {Film} from "../../models/film";
+import {Review} from "../../models/review";
 import {keysToCamel} from '../../lib/keys-to-camel/keys-to-camel';
 import {updateFilm} from "../../lib/update-film/update-film";
 

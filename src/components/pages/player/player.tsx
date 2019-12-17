@@ -4,7 +4,7 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {RouteComponentProps} from 'react-router-dom';
 
-import {Film} from "../../../models/Film";
+import {Film} from "../../../models/film";
 import {getFilmById} from "../../../reducer/data/selectors";
 import {withPlayerFunctionality} from "../../../hocs/with-player-functionality/with-player-functionality";
 import {VideoPlayer} from "../../shared/video-player/video-player";

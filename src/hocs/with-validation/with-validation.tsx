@@ -1,7 +1,7 @@
 import * as React from "react";
 import {FormEvent, SyntheticEvent} from "react";
 
-import {FormReview} from "../../models/FormReview";
+import {FormReview} from "../../models/form-review";
 import history from "../../history";
 
 

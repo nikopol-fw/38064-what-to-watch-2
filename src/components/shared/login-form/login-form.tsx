@@ -2,7 +2,7 @@ import * as React from 'react';
 import {FormEvent} from "react";
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 
-import {FormLogin} from '../../../models/FormLogin';
+import {FormLogin} from '../../../models/form-login';
 
 
 interface Props extends RouteComponentProps {
