@@ -9,6 +9,8 @@ import reducer from '../reducer';
 import {loadState, saveState} from './session';
 
 
+const UPDATE_SESSION_STORE_THROTTLE = 1000;
+
 const preloadedState = loadState();
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 const api = createAPI((argument) => store.dispatch(argument));
@@ -23,7 +25,7 @@ store.subscribe(throttle(() => {
   saveState({
     [NameSpace.USER]: store.getState()[NameSpace.USER]
   });
-}, 1000));
+}, UPDATE_SESSION_STORE_THROTTLE));
 
 
 export default store;

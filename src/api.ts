@@ -4,10 +4,12 @@ import history from './history';
 import {ActionCreator} from './reducer/user/user';
 
 
+const API_TIMEOUT = 5000;
+
 export const createAPI = (dispatch): AxiosInstance => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-2.appspot.com/wtw`,
-    timeout: 5000,
+    timeout: API_TIMEOUT,
     withCredentials: true,
   });
 
