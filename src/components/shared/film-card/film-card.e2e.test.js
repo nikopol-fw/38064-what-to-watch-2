@@ -3,7 +3,6 @@ import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import {films} from '../../../mocks/films';
-
 import {FilmCard} from './film-card';
 
 
@@ -22,7 +21,7 @@ describe(`FilmCard e2e`, () => {
     const onCardMouseEnter = jest.fn(() => void (0));
     const onCardMouseLeave = jest.fn();
 
-    const filmCard = shallow(<FilmCard
+    const wrapper = shallow(<FilmCard
       id={mock.film.id}
       title={mock.film.name}
       previewImage={mock.film.previewImage}
@@ -33,8 +32,7 @@ describe(`FilmCard e2e`, () => {
       onCardMouseLeave={onCardMouseLeave}
     />);
 
-    filmCard
-      .simulate(`mouseenter`);
+    wrapper.simulate(`mouseenter`);
 
     expect(onCardMouseEnter).toHaveBeenCalledTimes(1);
   });
