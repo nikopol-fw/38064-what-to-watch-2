@@ -21,10 +21,7 @@ const mock = {
 
 describe(`FilmCard e2e`, () => {
   it(`Hover callback get right information about card`, () => {
-    const onCardMouseEnter = jest.fn((index) => {
-      // eslint-disable-next-line no-console
-      console.log(index);
-    });
+    const onCardMouseEnter = jest.fn((index) => void (0));
     const onCardMouseLeave = jest.fn();
 
     const filmCard = shallow(<FilmCard

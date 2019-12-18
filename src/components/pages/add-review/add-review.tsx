@@ -21,72 +21,69 @@ interface Props {
   sendReview: () => Promise<any>;
 }
 
-export class AddReview extends React.PureComponent<Props> {
+export const AddReview: React.FC<Props> = (props) => {
+  const {film, user, sendReview} = props;
 
-  static readonly defaultProps = {
-    film: {
-      backgroundColor: null,
-      backgroundImage: null,
-      description: ``,
-      director: ``,
-      genre: ``,
-      id: null,
-      isFavorite: false,
-      name: ``,
-      posterImage: ``,
-      previewImage: ``,
-      previewVideoLink: ``,
-      rating: null,
-      released: null,
-      runTime: null,
-      scoresCount: 0,
-      starring: [``],
-      videoLink: ``,
-    },
-  };
-
-  render() {
-    const {film, user, sendReview} = this.props;
-
-    return (
-      <section className="movie-card movie-card--full"
-        style={{backgroundColor: film.backgroundColor}}>
-        <div className="movie-card__header">
-          <div className="movie-card__bg">
-            <img src={film.backgroundImage} alt="The Grand Budapest Hotel"/>
-          </div>
-
-          <h1 className="visually-hidden">WTW</h1>
-
-          <Header avatar={user.avatar} isAuth={!!(user.id)} name={user.name}>
-            <nav className="breadcrumbs">
-              <ul className="breadcrumbs__list">
-                <li className="breadcrumbs__item">
-                  <Link to={`/films/${film.id}`} className="breadcrumbs__link">{film.name}</Link>
-                </li>
-                <li className="breadcrumbs__item">
-                  <a className="breadcrumbs__link">Add review</a>
-                </li>
-              </ul>
-            </nav>
-          </Header>
-
-          <div className="movie-card__poster movie-card__poster--small">
-            <img src={film.posterImage} alt={film.name} width="218" height="327"/>
-          </div>
+  return (
+    <section className="movie-card movie-card--full"
+      style={{backgroundColor: film.backgroundColor}}>
+      <div className="movie-card__header">
+        <div className="movie-card__bg">
+          <img src={film.backgroundImage} alt="The Grand Budapest Hotel"/>
         </div>
 
-        <div className="add-review">
-          <ReviewFormWrapped
-            filmId={film.id}
-            sendReview={sendReview}
-          />
-        </div>
+        <h1 className="visually-hidden">WTW</h1>
 
-      </section>
-    );
-  }
-}
+        <Header avatar={user.avatar} isAuth={!!(user.id)} name={user.name}>
+          <nav className="breadcrumbs">
+            <ul className="breadcrumbs__list">
+              <li className="breadcrumbs__item">
+                <Link to={`/films/${film.id}`} className="breadcrumbs__link">{film.name}</Link>
+              </li>
+              <li className="breadcrumbs__item">
+                <a className="breadcrumbs__link">Add review</a>
+              </li>
+            </ul>
+          </nav>
+        </Header>
+
+        <div className="movie-card__poster movie-card__poster--small">
+          <img src={film.posterImage} alt={film.name} width="218" height="327"/>
+        </div>
+      </div>
+
+      <div className="add-review">
+        <ReviewFormWrapped
+          filmId={film.id}
+          sendReview={sendReview}
+        />
+      </div>
+
+    </section>
+  );
+};
+
+AddReview.defaultProps = {
+  film: {
+    backgroundColor: null,
+    backgroundImage: null,
+    description: ``,
+    director: ``,
+    genre: ``,
+    id: null,
+    isFavorite: false,
+    name: ``,
+    posterImage: ``,
+    previewImage: ``,
+    previewVideoLink: ``,
+    rating: null,
+    released: null,
+    runTime: null,
+    scoresCount: 0,
+    starring: [``],
+    videoLink: ``,
+  },
+};
 
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
