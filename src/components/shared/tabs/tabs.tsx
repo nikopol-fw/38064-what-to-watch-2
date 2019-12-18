@@ -29,7 +29,7 @@ export class Tabs extends React.PureComponent<Props> {
     this.props.setActiveItem(0);
   }
 
-  getClickTabHandler(ind: number) {
+  private getTabClickHandler(ind: number) {
     return (evt) => {
       evt.preventDefault();
       this.props.setActiveItem(ind);
@@ -48,7 +48,7 @@ export class Tabs extends React.PureComponent<Props> {
               <li className={`movie-nav__item${activeTab === i ? ` movie-nav__item--active` : ``}`}
                 key={`tab-${i}`}>
                 <a href="#" className="movie-nav__link"
-                  onClick={this.getClickTabHandler(i)}>{tab}</a>
+                  onClick={this.getTabClickHandler(i)}>{tab}</a>
               </li>
             ))}
           </ul>
