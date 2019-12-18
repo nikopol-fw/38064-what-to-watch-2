@@ -41,10 +41,6 @@ const ActionCreator = {
     type: ActionType.LOAD_REVIEWS,
     payload: reviews,
   }),
-  sendReview: (review) => ({
-    type: ActionType.SEND_REVIEW,
-    payload: review,
-  }),
   setFavoriteStatus: (updatedFilm: Film) => ({
     type: ActionType.SET_FAVORITE_STATUS,
     payload: updatedFilm,

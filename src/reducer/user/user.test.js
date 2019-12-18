@@ -1,12 +1,10 @@
 import {ActionCreator, ActionType, reducer} from './user';
+import {films} from '../../mocks/films';
+import {user} from '../../mocks/user';
 
 
 const mockInitialState = {
   info: {},
-};
-
-const mock = {
-  genreToChange: `Drama`,
 };
 
 
@@ -21,4 +19,29 @@ describe(`Reducer works correctly`, () => {
   });
 
 
+  it(`RESET_USER`, () => {
+    const action = {
+      type: ActionType.RESET_USER,
+    };
+
+    expect(reducer(mockInitialState, action)).toEqual(
+        Object.assign({}, mockInitialState, {
+          info: mockInitialState.info,
+        })
+    );
+  });
+
+
+  it(`UPDATE_USER_INFO`, () => {
+    const action = {
+      type: ActionType.UPDATE_USER_INFO,
+      payload: user,
+    };
+
+    expect(reducer(mockInitialState, action)).toEqual(
+        Object.assign({}, mockInitialState, {
+          info: user,
+        })
+    );
+  });
 });

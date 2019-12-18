@@ -27,22 +27,6 @@ const ActionCreator = {
 
 
 const Operation = {
-  authenticate: () => (dispatch, _getState, api: AxiosInstance) => {
-    return api.get(`/login`)
-      .then((response) => {
-        if (response && response.status === 200) {
-          const data = response.data;
-          const UserInfo: User = {
-            avatar: data[`avatar_url`],
-            email: data[`email`],
-            id: data[`id`],
-            name: data[`name`],
-          };
-          dispatch(ActionCreator.updateUserInfo(UserInfo));
-        }
-      });
-  },
-
   authorize: (formData: FormLogin) => (dispatch, _getState, api: AxiosInstance) => {
     return api.post(`/login`, formData)
       .then((response: AxiosResponse<LoginApiData>) => {
