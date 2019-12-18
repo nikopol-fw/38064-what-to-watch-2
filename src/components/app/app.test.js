@@ -1,21 +1,18 @@
-// import React from 'react';
-// import renderer from 'react-test-renderer';
+import React from 'react';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import toJSON from 'enzyme-to-json';
 
-// import {films} from './../../mocks/films';
+import {App} from './app';
 
-// import {App} from './app';
 
+Enzyme.configure({
+  adapter: new Adapter(),
+});
 
 it(`App correctly renders after relaunch`, () => {
-  // const tree = renderer
-  //   .create(<App
-  //     films={films}
-  //   />)
-  //   .toJSON();
-  //
-  // expect(tree).toMatchSnapshot();
-
-  const temp = true;
-
-  expect(temp).toEqual(true);
+  const tree = shallow(<App
+    user={null}
+  />);
+  expect(toJSON(tree)).toMatchSnapshot();
 });

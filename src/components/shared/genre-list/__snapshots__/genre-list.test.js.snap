@@ -23,7 +23,7 @@ exports[`GenreList correctly renders after relaunch 1`] = `
       href="#"
       onClick={[Function]}
     >
-      Crime
+      Action
     </a>
   </li>
   <li
@@ -46,6 +46,50 @@ exports[`GenreList correctly renders after relaunch 1`] = `
       onClick={[Function]}
     >
       Comedy
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Crime
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Drama
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Fantasy
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      Thriller
     </a>
   </li>
 </ul>

@@ -32,20 +32,20 @@ export class FilmsList extends React.PureComponent<Props, null> {
     this.clearTimer();
   }
 
-  clearTimer() {
+  private clearTimer() {
     if (this.delayTimer) {
       clearTimeout(this.delayTimer);
       this.delayTimer = null;
     }
   }
 
-  onCardMouseEnter(ind) {
+  private onCardMouseEnter(ind) {
     this.delayTimer = window.setTimeout(() => {
       this.props.setActiveItem(ind);
     }, FilmsList.VIDEO_PLAY_DELAY);
   }
 
-  onCardMouseLeaver() {
+  private onCardMouseLeaver() {
     this.clearTimer();
     this.props.resetActiveItem();
   }

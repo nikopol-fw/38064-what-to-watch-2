@@ -1,7 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
-import {ratingToDescription} from "../../../lib/rating-to-description/rating-to-description";
-import {formatRating} from "../../../lib/format-rating/format-rating";
+import {ratingToDescription} from '../../../lib/rating-to-description/rating-to-description';
+import {formatRating} from '../../../lib/format-rating/format-rating';
 
 
 interface Props {
@@ -13,7 +13,6 @@ interface Props {
 }
 
 export const TabOverview: React.FC<Props> = (props) => {
-
   const {description, director, rating, scoresCount, starring} = props;
 
   const formattedStarring = starring.join(`, `);

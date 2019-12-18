@@ -8,7 +8,6 @@ import {StaticRouter} from 'react-router-dom';
 
 
 const mock = {
-  activeGenre: `All genres`,
   films,
   activeCard: -1,
   setActiveCard: () => void (0),
@@ -16,18 +15,16 @@ const mock = {
 };
 
 it(`FilmList correctly renders after relaunch`, () => {
-  const tree = renderer
-    .create(
-        <StaticRouter>
-          <FilmsList
-            films={mock.films}
-            activeItem={mock.activeCard}
-            setActiveItem={mock.setActiveCard}
-            resetActiveItem={mock.resetActiveCard}
-          />
-        </StaticRouter>
-    )
-    .toJSON();
+  const tree = renderer.create(
+      <StaticRouter>
+        <FilmsList
+          films={mock.films}
+          activeItem={mock.activeCard}
+          setActiveItem={mock.setActiveCard}
+          resetActiveItem={mock.resetActiveCard}
+        />
+      </StaticRouter>
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

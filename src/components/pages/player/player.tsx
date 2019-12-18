@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {RefObject} from "react";
-import {compose} from "redux";
-import {connect} from "react-redux";
+import {RefObject} from 'react';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
 import {RouteComponentProps} from 'react-router-dom';
 
-import {Film} from "../../../models/film";
-import {getFilmById} from "../../../reducer/data/selectors";
-import {withPlayerFunctionality} from "../../../hocs/with-player-functionality/with-player-functionality";
-import {VideoPlayer} from "../../shared/video-player/video-player";
-import {PlayerProgress} from "../../shared/player-progress/player-progress";
+import {Film} from '../../../models/film';
+import {getFilmById} from '../../../reducer/data/selectors';
+import {withPlayerFunctionality} from '../../../hocs/with-player-functionality/with-player-functionality';
+import {VideoPlayer} from '../../shared/video-player/video-player';
+import {PlayerProgress} from '../../shared/player-progress/player-progress';
 
 
 interface Props extends RouteComponentProps {

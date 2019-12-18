@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {Link} from "react-router-dom";
-import {connect} from "react-redux";
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-import {Film} from "../../../models/film";
-import {User} from "../../../models/user";
-import {getFavorites} from "../../../reducer/data/selectors";
-import {withActiveItem} from "../../../hocs/with-active-item/with-active-item";
-import {FilmsList} from "../../shared/films-list/films-list";
-import {Operation} from "../../../reducer/data/data";
+import {Film} from '../../../models/film';
+import {User} from '../../../models/user';
+import {getFavorites} from '../../../reducer/data/selectors';
+import {withActiveItem} from '../../../hocs/with-active-item/with-active-item';
+import {FilmsList} from '../../shared/films-list/films-list';
+import {Operation} from '../../../reducer/data/data';
 
 
 const FilmsListWrapped = withActiveItem(FilmsList);

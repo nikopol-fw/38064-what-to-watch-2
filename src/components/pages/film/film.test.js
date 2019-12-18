@@ -11,6 +11,7 @@ const mock = {
   film: films[0],
   films,
   user,
+  setFavorite: () => void (0),
 };
 
 it(`FilmPage correctly renders afters relaunch`, () => {
@@ -21,6 +22,7 @@ it(`FilmPage correctly renders afters relaunch`, () => {
             film={mock.film}
             films={mock.films}
             user={mock.user}
+            setFavorite={mock.setFavorite}
           />
         </StaticRouter>
     )

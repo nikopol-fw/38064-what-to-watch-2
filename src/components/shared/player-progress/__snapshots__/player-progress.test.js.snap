@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerProgress correctly renders afters relaunch 1`] = `
+<div
+  className="player__controls-row"
+>
+  <div
+    className="player__time"
+  >
+    <progress
+      className="player__progress"
+      max="100"
+      value={50}
+    />
+    <div
+      className="player__toggler"
+      style={
+        Object {
+          "left": "50%",
+        }
+      }
+    >
+      Toggler
+    </div>
+  </div>
+  <div
+    className="player__time-value"
+  >
+    00:07:47
+  </div>
+</div>
+`;

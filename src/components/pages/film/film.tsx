@@ -1,17 +1,17 @@
 import * as React from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {Link, RouteComponentProps} from 'react-router-dom';
 
-import {Film} from "../../../models/film";
-import {User} from "../../../models/user";
-import {Operation} from "../../../reducer/data/data";
-import {getFilmById, getRelatedFilms} from "../../../reducer/data/selectors";
-import {getUserInfo} from "../../../reducer/user/selectors";
-import {withActiveItem} from "../../../hocs/with-active-item/with-active-item";
-import {Footer} from "../../shared/footer/footer";
-import {Header} from "../../shared/header/header";
-import {Tabs} from "../../shared/tabs/tabs";
-import {FilmsList} from "../../shared/films-list/films-list";
+import {Film} from '../../../models/film';
+import {User} from '../../../models/user';
+import {Operation} from '../../../reducer/data/data';
+import {getFilmById, getRelatedFilms} from '../../../reducer/data/selectors';
+import {getUserInfo} from '../../../reducer/user/selectors';
+import {withActiveItem} from '../../../hocs/with-active-item/with-active-item';
+import {Footer} from '../../shared/footer/footer';
+import {Header} from '../../shared/header/header';
+import {Tabs} from '../../shared/tabs/tabs';
+import {FilmsList} from '../../shared/films-list/films-list';
 
 
 const FilmsListWrapped = withActiveItem(FilmsList);

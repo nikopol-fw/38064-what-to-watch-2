@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
-import {Film} from "../../../models/film";
-import {User} from "../../../models/user";
-import {getFilmById} from "../../../reducer/data/selectors";
-import {getUserInfo} from "../../../reducer/user/selectors";
-import {withValidation} from "../../../hocs/with-validation/with-validation";
-import {Header} from "../../shared/header/header";
-import {ReviewForm} from "../../shared/review-form/review-form";
-import {Operation} from "../../../reducer/data/data";
-import {FormReview} from "../../../models/form-review";
-import {Link} from "react-router-dom";
+import {Film} from '../../../models/film';
+import {User} from '../../../models/user';
+import {getFilmById} from '../../../reducer/data/selectors';
+import {getUserInfo} from '../../../reducer/user/selectors';
+import {withValidation} from '../../../hocs/with-validation/with-validation';
+import {Header} from '../../shared/header/header';
+import {ReviewForm} from '../../shared/review-form/review-form';
+import {Operation} from '../../../reducer/data/data';
+import {FormReview} from '../../../models/form-review';
+import {Link} from 'react-router-dom';
 
 
 const ReviewFormWrapped = withValidation(ReviewForm);

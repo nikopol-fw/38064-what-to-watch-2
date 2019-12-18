@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App correctly renders after relaunch 1`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Switch>
+    <Route
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "COUNT_LIKE_THIS": 4,
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(FilmPage)",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/films/:id"
+    />
+    <Route
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(WithPlayerFunctionality(Player))",
+          "type": [Function],
+        }
+      }
+      exact={true}
+      path="/films/:id/player"
+    />
+    <PrivateRoute
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(AddReview)",
+          "type": [Function],
+        }
+      }
+      is={null}
+      path="/films/:id/review"
+      redirectTo="/login"
+    />
+    <PrivateRoute
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(MyList)",
+          "type": [Function],
+        }
+      }
+      data={
+        Object {
+          "user": null,
+        }
+      }
+      is={null}
+      path="/mylist"
+      redirectTo="/login"
+    />
+    <PrivateRoute
+      component={
+        Object {
+          "$$typeof": Symbol(react.memo),
+          "WrappedComponent": [Function],
+          "compare": null,
+          "displayName": "Connect(LoginPage)",
+          "type": [Function],
+        }
+      }
+      is={true}
+      path="/login"
+      redirectTo="/"
+    />
+  </Switch>
+</Router>
+`;

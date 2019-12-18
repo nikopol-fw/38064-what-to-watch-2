@@ -13,28 +13,25 @@ interface Props {
   onTimeUpdate?: () => void;
 }
 
-export class VideoPlayer extends React.PureComponent<Props> {
+export const VideoPlayer: React.FC<Props> = (props) => {
+  const {isMuted, poster, video, videoRef, onMetadataLoaded, onTimeUpdate} = props;
 
-  render() {
-    const {isMuted, poster, video, videoRef, onMetadataLoaded, onTimeUpdate} = this.props;
-
-    return onMetadataLoaded && onTimeUpdate
-      ? (
-        <video className="player__video" preload="metadata"
-          src={video}
-          poster={poster}
-          muted={isMuted}
-          ref={videoRef}
-          onLoadedMetadata={onMetadataLoaded}
-          onTimeUpdate={onTimeUpdate}
-        />
-      ) : (
-        <video className="player__video" preload="metadata"
-          src={video}
-          poster={poster}
-          muted={isMuted}
-          ref={videoRef}
-        />
-      );
-  }
-}
+  return onMetadataLoaded && onTimeUpdate
+    ? (
+      <video className="player__video" preload="metadata"
+        src={video}
+        poster={poster}
+        muted={isMuted}
+        ref={videoRef}
+        onLoadedMetadata={onMetadataLoaded}
+        onTimeUpdate={onTimeUpdate}
+      />
+    ) : (
+      <video className="player__video" preload="metadata"
+        src={video}
+        poster={poster}
+        muted={isMuted}
+        ref={videoRef}
+      />
+    );
+};

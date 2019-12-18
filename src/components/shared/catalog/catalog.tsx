@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
-import {Film} from "../../../models/film";
-import {getFilmsByGenre} from "../../../reducer/data/selectors";
-import {withActiveItem} from "../../../hocs/with-active-item/with-active-item";
-import {GenreList} from "../genre-list/genre-list";
-import {FilmsList} from "../films-list/films-list";
-import {ShowMoreBtn} from "../show-more-btn/show-more-btn";
+import {Film} from '../../../models/film';
+import {getFilmsByGenre} from '../../../reducer/data/selectors';
+import {withActiveItem} from '../../../hocs/with-active-item/with-active-item';
+import {GenreList} from '../genre-list/genre-list';
+import {FilmsList} from '../films-list/films-list';
+import {ShowMoreBtn} from '../show-more-btn/show-more-btn';
 
 
 const FilmsListWrapped = withActiveItem(FilmsList);

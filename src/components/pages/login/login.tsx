@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import {FormLogin} from "../../../models/form-login";
-import {Operation} from "../../../reducer/user/user";
-import LoginForm from "../../shared/login-form/login-form";
+import {FormLogin} from '../../../models/form-login';
+import {Operation} from '../../../reducer/user/user';
+import LoginForm from '../../shared/login-form/login-form';
 
 
 interface Props {

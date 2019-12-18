@@ -2,15 +2,15 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Redirect, Route, Router, Switch} from 'react-router-dom';
 
-import {User} from "../../models/user";
-import history from "../../history";
-import {getUserInfo} from "../../reducer/user/selectors";
-import AddReview from "../pages/add-review/add-review";
+import {User} from '../../models/user';
+import history from '../../history';
+import {getUserInfo} from '../../reducer/user/selectors';
+import AddReview from '../pages/add-review/add-review';
 import FilmPage from '../pages/film/film';
 import LoginPage from '../pages/login/login';
 import MainPage from '../pages/main/main';
-import MyList from "../pages/my-list/my-list";
-import Player from "../pages/player/player";
+import MyList from '../pages/my-list/my-list';
+import Player from '../pages/player/player';
 
 
 interface PrivateRouteProps {
@@ -40,7 +40,7 @@ interface Props {
 export const App: React.FC<Props> = (props) => {
   const {user} = props;
 
-  const isLogin = !!user.id;
+  const isLogin = user && !!user.id;
 
   return (
     <Router history={history}>
