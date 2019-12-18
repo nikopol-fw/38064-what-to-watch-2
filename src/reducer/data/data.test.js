@@ -1,11 +1,10 @@
 import MockAdapter from 'axios-mock-adapter';
 
 import {films} from '../../mocks/films';
-import {createAPI} from '../../api';
-import {ActionCreator, ActionType, Operation} from './data';
-import {reducer} from '../data/data';
 import {reviews} from '../../mocks/reviews';
 import {updateFilm} from '../../lib/update-film/update-film';
+import {ActionCreator, ActionType, Operation, reducer} from './data';
+import {createAPI} from '../../api';
 
 
 const mockInitialState = {
@@ -132,24 +131,115 @@ describe(`Reducer works correctly`, () => {
         })
     );
   });
+});
 
 
-  it(`Should make a correct API call to /films`, () => {
+describe(`API works correctly`, () => {
+  it(`loadFavorites`, () => {
     const dispatch = jest.fn();
     const api = createAPI(dispatch);
     const apiMock = new MockAdapter(api);
-    const filmsLoader = Operation.loadFilms();
+    const loader = Operation.loadFavorites();
+
+    apiMock
+      .onGet(`/favorite`)
+      .reply(200, [{fake: true}]);
+
+    return loader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_FAVORITES,
+          payload: [{fake: true}],
+        });
+      });
+  });
+
+
+  it(`loadFilms`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const loader = Operation.loadFilms();
 
     apiMock
       .onGet(`/films`)
       .reply(200, [{fake: true}]);
 
-    return filmsLoader(dispatch, jest.fn(), api)
+    return loader(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_FILMS,
           payload: [{fake: true}],
+        });
+      });
+  });
+
+
+  it(`loadPromo`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const loader = Operation.loadPromo();
+
+    apiMock
+      .onGet(`/films/promo`)
+      .reply(200, {id: 1});
+
+    return loader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_PROMO,
+          payload: 1,
+        });
+      });
+  });
+
+
+  it(`loadReviews`, () => {
+    const mockFilmId = 1;
+    const dispatch = jest.fn();
+    const api = createAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const loader = Operation.loadReviews(mockFilmId);
+
+    apiMock
+      .onGet(`/comments/${mockFilmId}`)
+      .reply(200, [{date: `2019-12-09T10:46:15.934Z`}]);
+
+    return loader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_REVIEWS,
+          payload: [{date: new Date(`2019-12-09T10:46:15.934Z`)}],
+        });
+      });
+  });
+
+
+  it(`setFavoriteStatus`, () => {
+    const mock = {
+      filmId: 1,
+      status: 0,
+    };
+    const dispatch = jest.fn();
+    const api = createAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const loader = Operation.setFavoriteStatus(mock.filmId, mock.status);
+
+    apiMock
+      .onPost(`/favorite/${mock.filmId}/${mock.status}`)
+      .reply(200, {fake: true});
+
+    return loader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.SET_FAVORITE_STATUS,
+          payload: {fake: true},
         });
       });
   });

@@ -1,6 +1,8 @@
-import {ActionCreator, ActionType, reducer} from './user';
-import {films} from '../../mocks/films';
+import MockAdapter from 'axios-mock-adapter';
+
 import {user} from '../../mocks/user';
+import {ActionCreator, ActionType, Operation, reducer} from './user';
+import {createAPI} from '../../api';
 
 
 const mockInitialState = {
@@ -55,5 +57,38 @@ describe(`Reducer works correctly`, () => {
           info: user,
         })
     );
+  });
+});
+
+
+describe(`API works correctly`, () => {
+  it(`authorize`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI(dispatch);
+    const apiMock = new MockAdapter(api);
+    const loader = Operation.authorize();
+
+    apiMock
+      .onPost(`/login`)
+      .reply(200, {
+        'avatar_url': `url`,
+        'email': `email`,
+        'id': 1,
+        'name': `Tesla`,
+      });
+
+    return loader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.UPDATE_USER_INFO,
+          payload: {
+            avatar: `url`,
+            email: `email`,
+            id: 1,
+            name: `Tesla`,
+          },
+        });
+      });
   });
 });
