@@ -23,13 +23,13 @@ export const withActiveItem = (Component) => {
       this.resetState = this.resetState.bind(this);
     }
 
-    setActiveItem(ind) {
+    private setActiveItem(ind) {
       this.setState({
         activeItem: ind,
       });
     }
 
-    resetState() {
+    private resetState() {
       this.setState({
         activeItem: -1,
       });

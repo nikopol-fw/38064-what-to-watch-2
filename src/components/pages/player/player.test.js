@@ -20,24 +20,22 @@ const mock = {
 };
 
 it(`Player correctly renders afters relaunch`, () => {
-  const tree = renderer
-    .create(
-        <StaticRouter>
-          <Player
-            film={mock.film}
-            isPlaying={mock.isPlaying}
-            percentage={mock.percentage}
-            timingString={mock.timingString}
-            videoRef={mock.videoRef}
-            onFullScreenBtnClick={mock.onFullScreenBtnClick}
-            onPlayBtnClick={mock.onPlayBtnClick}
-            onPauseBtnClick={mock.onPauseBtnClick}
-            onMetadataLoaded={mock.onMetadataLoaded}
-            onTimeUpdate={mock.onTimeUpdate}
-          />
-        </StaticRouter>
-    )
-    .toJSON();
+  const tree = renderer.create(
+      <StaticRouter>
+        <Player
+          film={mock.film}
+          isPlaying={mock.isPlaying}
+          percentage={mock.percentage}
+          timingString={mock.timingString}
+          videoRef={mock.videoRef}
+          onFullScreenBtnClick={mock.onFullScreenBtnClick}
+          onPlayBtnClick={mock.onPlayBtnClick}
+          onPauseBtnClick={mock.onPauseBtnClick}
+          onMetadataLoaded={mock.onMetadataLoaded}
+          onTimeUpdate={mock.onTimeUpdate}
+        />
+      </StaticRouter>
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

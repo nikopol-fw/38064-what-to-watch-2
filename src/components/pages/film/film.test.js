@@ -15,18 +15,16 @@ const mock = {
 };
 
 it(`FilmPage correctly renders afters relaunch`, () => {
-  const tree = renderer
-    .create(
-        <StaticRouter>
-          <FilmPage
-            film={mock.film}
-            films={mock.films}
-            user={mock.user}
-            setFavorite={mock.setFavorite}
-          />
-        </StaticRouter>
-    )
-    .toJSON();
+  const tree = renderer.create(
+      <StaticRouter>
+        <FilmPage
+          film={mock.film}
+          films={mock.films}
+          user={mock.user}
+          setFavorite={mock.setFavorite}
+        />
+      </StaticRouter>
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

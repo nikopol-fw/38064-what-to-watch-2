@@ -1,7 +1,7 @@
 import axios, {AxiosInstance} from 'axios';
-import history from "./history";
+import history from './history';
 
-import {ActionCreator} from "./reducer/user/user";
+import {ActionCreator} from './reducer/user/user';
 
 
 export const createAPI = (dispatch): AxiosInstance => {

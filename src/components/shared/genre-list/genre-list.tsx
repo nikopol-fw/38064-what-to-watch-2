@@ -7,7 +7,7 @@ interface Props {
   setActiveGenre: (genre: string) => void;
 }
 
-class GenreList extends React.PureComponent<Props> {
+export class GenreList extends React.PureComponent<Props> {
 
   getClickGenreLinkHandler(genre) {
     return (evt) => {
@@ -30,6 +30,3 @@ class GenreList extends React.PureComponent<Props> {
     </ul>;
   }
 }
-
-
-export {GenreList};

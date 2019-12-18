@@ -25,14 +25,14 @@ export const withFilters = (Component) => {
       this.showMore = this.showMore.bind(this);
     }
 
-    setActiveGenre(genre: string) {
+    private setActiveGenre(genre: string) {
       this.setState({
         activeGenre: genre,
         count: INITIAL_COUNT,
       });
     }
 
-    showMore() {
+    private showMore() {
       this.setState((state) => ({
         count: state.count + COUNT_TO_INCREASE,
       }));

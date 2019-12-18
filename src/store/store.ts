@@ -3,10 +3,10 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import throttle from 'lodash-es/throttle';
 
-import NameSpace from "../reducer/name-spaces";
+import NameSpace from '../reducer/name-spaces';
 import {createAPI} from '../api';
 import reducer from '../reducer';
-import {loadState, saveState} from "./session";
+import {loadState, saveState} from './session';
 
 
 const preloadedState = loadState();

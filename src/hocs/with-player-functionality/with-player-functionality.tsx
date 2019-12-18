@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {formatTime} from "../../lib/format-time/format-time";
+
+import {formatTime} from '../../lib/format-time/format-time';
 
 
 interface State {

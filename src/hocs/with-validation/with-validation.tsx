@@ -1,8 +1,8 @@
-import * as React from "react";
-import {FormEvent, SyntheticEvent} from "react";
+import * as React from 'react';
+import {FormEvent, SyntheticEvent} from 'react';
 
-import {FormReview} from "../../models/form-review";
-import history from "../../history";
+import {FormReview} from '../../models/form-review';
+import history from '../../history';
 
 
 interface State {

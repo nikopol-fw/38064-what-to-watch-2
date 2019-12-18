@@ -14,17 +14,15 @@ const mock = {
 };
 
 it(`MyList correctly renders afters relaunch`, () => {
-  const tree = renderer
-    .create(
-        <StaticRouter>
-          <MyList
-            films={mock.films}
-            loadFavorites={mock.setFavorite}
-            user={mock.user}
-          />
-        </StaticRouter>
-    )
-    .toJSON();
+  const tree = renderer.create(
+      <StaticRouter>
+        <MyList
+          films={mock.films}
+          loadFavorites={mock.setFavorite}
+          user={mock.user}
+        />
+      </StaticRouter>
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
