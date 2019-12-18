@@ -35,20 +35,20 @@ export class MainPage extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
 
-    this.clickFavoriteHandler = this.clickFavoriteHandler.bind(this);
-    this.clickPlayHandler = this.clickPlayHandler.bind(this);
+    this.handleFavoriteBtnClick = this.handleFavoriteBtnClick.bind(this);
+    this.handlePlayBtnClick = this.handlePlayBtnClick.bind(this);
 
     props.loadPromo();
   }
 
-  clickFavoriteHandler() {
+  private handleFavoriteBtnClick() {
     this.props.setFavorite(
         this.props.promo.id,
         this.props.promo.isFavorite ? 0 : 1,
     );
   }
 
-  clickPlayHandler() {
+  private handlePlayBtnClick() {
     const {promo} = this.props;
     history.push(`/films/${promo.id}/player`);
   }
@@ -84,7 +84,7 @@ export class MainPage extends React.PureComponent<Props> {
                   {promo && (
                     <>
                       <button className="btn btn--play movie-card__button" type="button"
-                        onClick={this.clickPlayHandler}>
+                        onClick={this.handlePlayBtnClick}>
                         <svg viewBox="0 0 19 19" width="19" height="19">
                           <use xlinkHref="#play-s"/>
                         </svg>
@@ -92,7 +92,7 @@ export class MainPage extends React.PureComponent<Props> {
                       </button>
 
                       <button className="btn btn--list movie-card__button" type="button"
-                        onClick={this.clickFavoriteHandler}>
+                        onClick={this.handleFavoriteBtnClick}>
                         <svg viewBox="0 0 19 20" width="19" height="20">
                           <use xlinkHref={promo.isFavorite ? `#in-list` : `#add`}/>
                         </svg>

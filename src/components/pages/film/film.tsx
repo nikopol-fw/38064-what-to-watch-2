@@ -55,16 +55,16 @@ export class FilmPage extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
 
-    this.clickPlayBtnHandler = this.clickPlayBtnHandler.bind(this);
-    this.clickFavoriteHandler = this.clickFavoriteHandler.bind(this);
+    this.handlePlayBtnClick = this.handlePlayBtnClick.bind(this);
+    this.handleFavoriteBtnClick = this.handleFavoriteBtnClick.bind(this);
   }
 
-  clickPlayBtnHandler() {
+  private handlePlayBtnClick() {
     const {film, history} = this.props;
     history.push(`/films/${film.id}/player`);
   }
 
-  clickFavoriteHandler() {
+  private handleFavoriteBtnClick() {
     this.props.setFavorite(
         this.props.film.id,
         this.props.film.isFavorite ? 0 : 1,
@@ -96,13 +96,13 @@ export class FilmPage extends React.PureComponent<Props> {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button" onClick={this.clickPlayBtnHandler}>
+                  <button className="btn btn--play movie-card__button" type="button" onClick={this.handlePlayBtnClick}>
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"/>
                     </svg>
                     <span>Play</span>
                   </button>
-                  <button className="btn btn--list movie-card__button" type="button" onClick={this.clickFavoriteHandler}>
+                  <button className="btn btn--list movie-card__button" type="button" onClick={this.handleFavoriteBtnClick}>
                     <svg viewBox="0 0 19 20" width="19" height="20">
                       <use xlinkHref={film.isFavorite ? `#in-list` : `#add`}/>
                     </svg>

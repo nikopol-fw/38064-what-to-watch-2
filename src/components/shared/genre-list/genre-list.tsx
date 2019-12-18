@@ -9,7 +9,7 @@ interface Props {
 
 export class GenreList extends React.PureComponent<Props> {
 
-  getClickGenreLinkHandler(genre) {
+  private getGenreLinkClickHandler(genre) {
     return (evt) => {
       evt.preventDefault();
       this.props.setActiveGenre(genre);
@@ -24,7 +24,7 @@ export class GenreList extends React.PureComponent<Props> {
         <li className={`catalog__genres-item${genre === activeGenre ? ` catalog__genres-item--active` : ``}`}
           key={`filter-genre-${i}`}>
           <a href="#" className="catalog__genres-link"
-            onClick={this.getClickGenreLinkHandler(genre)}>{genre}</a>
+            onClick={this.getGenreLinkClickHandler(genre)}>{genre}</a>
         </li>
       ))}
     </ul>;

@@ -55,10 +55,10 @@ export class Player extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
 
-    this.exitBtnClickHandler = this.exitBtnClickHandler.bind(this);
+    this.handleExitBtnClick = this.handleExitBtnClick.bind(this);
   }
 
-  private exitBtnClickHandler() {
+  private handleExitBtnClick() {
     const {history, location} = this.props;
     if (location.key) {
       history.goBack();
@@ -92,7 +92,7 @@ export class Player extends React.PureComponent<Props> {
           onTimeUpdate={onTimeUpdate}
         />
 
-        <button type="button" className="player__exit" onClick={this.exitBtnClickHandler}>Exit</button>
+        <button type="button" className="player__exit" onClick={this.handleExitBtnClick}>Exit</button>
 
         <div className="player__controls">
 
