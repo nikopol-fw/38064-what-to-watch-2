@@ -12,8 +12,12 @@ interface State {
 
 export const withValidation = (Component) => {
   type T = React.ComponentProps<typeof Component>;
+  interface Props extends T {
+    filmId: number;
+    sendReview: (filmId: number, formData: FormReview) => Promise<any>;
+  }
 
-  class WithValidation extends React.PureComponent<T, State> {
+  class WithValidation extends React.PureComponent<Props, State> {
 
     state = {
       isDisabled: false,
@@ -25,10 +29,6 @@ export const withValidation = (Component) => {
 
       this.onFormChange = this.onFormChange.bind(this);
       this.onFormSubmit = this.onFormSubmit.bind(this);
-    }
-
-    componentWillUnmount() {
-      // this.onFormChange = null;
     }
 
     private onFormChange(evt: SyntheticEvent<HTMLFormElement, FormEvent>) {

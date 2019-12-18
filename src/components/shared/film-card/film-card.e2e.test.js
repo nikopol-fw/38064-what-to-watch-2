@@ -11,20 +11,19 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-
 const mock = {
   film: films[0],
   isPlaying: false,
   index: 0,
 };
 
-
 describe(`FilmCard e2e`, () => {
   it(`Hover callback get right information about card`, () => {
-    const onCardMouseEnter = jest.fn((index) => void (0));
+    const onCardMouseEnter = jest.fn(() => void (0));
     const onCardMouseLeave = jest.fn();
 
     const filmCard = shallow(<FilmCard
+      id={mock.film.id}
       title={mock.film.name}
       previewImage={mock.film.previewImage}
       previewVideoLink={mock.film.previewVideoLink}
