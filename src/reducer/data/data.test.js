@@ -15,20 +15,44 @@ const mockInitialState = {
   reviews: [],
 };
 
-const mock = {
-  film: films[0],
-  isPlaying: false,
-  index: 0,
-  onCardMouseEnter: () => void (0),
-  onCardMouseLeave: () => void (0),
-};
-
 
 describe(`Action creators work correctly`, () => {
-  it(`Action creators for load films returns correct action`, () => {
-    expect(ActionCreator.loadFilms(mock.films)).toEqual({
+  it(`loadFavorites`, () => {
+    expect(ActionCreator.loadFavorites(films)).toEqual({
+      type: ActionType.LOAD_FAVORITES,
+      payload: films,
+    });
+  });
+
+
+  it(`loadFilms`, () => {
+    expect(ActionCreator.loadFilms(films)).toEqual({
       type: ActionType.LOAD_FILMS,
-      payload: mock.films,
+      payload: films,
+    });
+  });
+
+
+  it(`loadPromo`, () => {
+    expect(ActionCreator.loadPromo(1)).toEqual({
+      type: ActionType.LOAD_PROMO,
+      payload: 1,
+    });
+  });
+
+
+  it(`loadReviews`, () => {
+    expect(ActionCreator.loadReviews(reviews)).toEqual({
+      type: ActionType.LOAD_REVIEWS,
+      payload: reviews,
+    });
+  });
+
+
+  it(`setFavoriteStatus`, () => {
+    expect(ActionCreator.setFavoriteStatus(films[0])).toEqual({
+      type: ActionType.SET_FAVORITE_STATUS,
+      payload: films[0],
     });
   });
 });

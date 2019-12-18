@@ -8,9 +8,21 @@ const mockInitialState = {
 };
 
 
-// describe(`Action creators work correctly`, () => {
-//
-// });
+describe(`Action creators work correctly`, () => {
+  it(`resetUserInfo`, () => {
+    expect(ActionCreator.resetUserInfo()).toEqual({
+      type: ActionType.RESET_USER,
+    });
+  });
+
+
+  it(`updateUserInfo`, () => {
+    expect(ActionCreator.updateUserInfo(user)).toEqual({
+      type: ActionType.UPDATE_USER_INFO,
+      payload: user,
+    });
+  });
+});
 
 
 describe(`Reducer works correctly`, () => {
