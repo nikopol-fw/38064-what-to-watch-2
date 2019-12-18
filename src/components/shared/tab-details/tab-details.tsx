@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {timeToHoursMinutes} from '../../../lib/timeToHoursMinutes/time-to-hours-minutes';
+import {timeToHoursMinutes} from '../../../lib/time-to-hours-minutes/time-to-hours-minutes';
 
 
 interface Props {
